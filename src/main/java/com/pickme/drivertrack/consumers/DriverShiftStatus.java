@@ -1,7 +1,8 @@
 package com.pickme.drivertrack.consumers;
 
-import CassandraDBHelper.ConnectCassandra;
+
 import com.datastax.driver.core.Session;
+import com.pickme.dbhelper.CassandraConnector;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -13,6 +14,7 @@ import java.util.Arrays;
 import java.util.Properties;
 
 public class DriverShiftStatus {
+        private CassandraConnector cassandraConnector;
         private Session session;
         private Properties properties;
         private  String topic;
@@ -25,9 +27,7 @@ public class DriverShiftStatus {
         }
 
         public void getdata(){
-            ConnectCassandra client = new ConnectCassandra();
-            client.connect("127.0.0.1", 9042);
-            session = client.getSession();
+            cassandraConnector= new CassandraConnector("127.0.0.1",9042);
             final Consumer<String, GenericRecord> consumer = new KafkaConsumer<>(properties);
             consumer.subscribe(Arrays.asList(topic));
             try {
@@ -39,7 +39,7 @@ public class DriverShiftStatus {
 
                         JSONObject jsonObject= new JSONObject(record.value().get("body").toString());
 
-
+                        cassandraConnector.insertShiftStatus((int)jsonObject.get("driver_id"),(String) jsonObject.get("status"));
 
 
                     }
