@@ -1,11 +1,10 @@
-import ConnectCassandra.ConnectCassandra;
+import CassandraDBHelper.ConnectCassandra;
 import com.datastax.driver.core.Session;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.common.protocol.types.Field;
 import org.json.JSONObject;
 
 import java.util.Arrays;
@@ -39,7 +38,7 @@ public class DriverLoginStatus {
                     JSONObject jsonObject= new JSONObject(record.value().get("body").toString());
 
 
-                   // System.out.println(jsonObject.get("id")+  " Driver Login status "+(String)jsonObject.get("status"));
+
                     StringBuilder sb = new StringBuilder("INSERT INTO ")
                             .append("TrackDriverLive")
                             .append(".").append("Driverlive").append("(driver_id, loginstatus) ")

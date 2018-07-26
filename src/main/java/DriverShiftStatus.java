@@ -1,4 +1,4 @@
-import ConnectCassandra.ConnectCassandra;
+import CassandraDBHelper.ConnectCassandra;
 import com.datastax.driver.core.Session;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.Consumer;
@@ -6,7 +6,6 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.json.JSONObject;
-import scala.Int;
 
 import java.util.Arrays;
 import java.util.Properties;
@@ -37,8 +36,7 @@ public class DriverShiftStatus {
 
 
                         JSONObject jsonObject= new JSONObject(record.value().get("body").toString());
-                        //System.out.println(jsonObject.get("driver_id")+  " Driver shift status "+(String)jsonObject.get("status"));
-                        // System.out.println(jsonObject.get("id")+  " Driver Login status "+(String)jsonObject.get("status"));
+
                         StringBuilder sb = new StringBuilder("INSERT INTO ")
                                 .append("TrackDriverLive")
                                 .append(".").append("Driverlive").append("(driver_id,shiftstatus ) ")

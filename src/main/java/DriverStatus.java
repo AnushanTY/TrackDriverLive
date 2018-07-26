@@ -1,19 +1,13 @@
-import ConnectCassandra.ConnectCassandra;
+import CassandraDBHelper.ConnectCassandra;
 import com.datastax.driver.core.Session;
-import kafka.utils.json.JsonObject;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONString;
 
-import java.io.IOException;
 import java.util.Arrays;
-import java.util.Map;
 import java.util.Properties;
 
 public class DriverStatus {
@@ -41,7 +35,6 @@ public class DriverStatus {
                     for (ConsumerRecord<String, GenericRecord> record : records) {
 
                         JSONObject jsonObject= new JSONObject(record.value().get("body").toString());
-                        //System.out.println(jsonObject.get("id")+  " Driver status "+(String)jsonObject.get("status"));
 
 
                         StringBuilder sb = new StringBuilder("INSERT INTO ")

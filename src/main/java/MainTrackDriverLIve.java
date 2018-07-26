@@ -3,7 +3,7 @@ import org.apache.log4j.BasicConfigurator;
 
 import java.util.Properties;
 
-public class Main {
+public class MainTrackDriverLIve {
     public static Properties props;
     public static String topic1="driver_login_status";
     public static String topic2="driver_shift_status";
