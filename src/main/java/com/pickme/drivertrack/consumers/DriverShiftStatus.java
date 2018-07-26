@@ -2,6 +2,7 @@ package com.pickme.drivertrack.consumers;
 
 
 import com.datastax.driver.core.Session;
+import com.pickme.config.Config;
 import com.pickme.dbhelper.CassandraConnector;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.Consumer;
@@ -27,7 +28,7 @@ public class DriverShiftStatus {
         }
 
         public void getdata(){
-            cassandraConnector= new CassandraConnector("127.0.0.1",9042);
+            cassandraConnector= new CassandraConnector(Config.ADDRESS,Config.PORT);
             final Consumer<String, GenericRecord> consumer = new KafkaConsumer<>(properties);
             consumer.subscribe(Arrays.asList(topic));
             try {

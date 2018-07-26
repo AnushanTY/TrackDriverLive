@@ -1,3 +1,5 @@
+package com.pickme.config;
+
 public class Config {
     public static final String ADDRESS = "localhost";
     public static final int PORT = 9042;
