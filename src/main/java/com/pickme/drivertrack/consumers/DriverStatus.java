@@ -1,7 +1,7 @@
 package com.pickme.drivertrack.consumers;
 
-import CassandraDBHelper.ConnectCassandra;
 import com.datastax.driver.core.Session;
+import com.pickme.dbhelper.CassandraConnector;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Properties;
 
 public class DriverStatus {
+    private CassandraConnector cassandraConnector;
         private Session session;
         private Properties properties;
         private  String topic;
@@ -25,10 +26,8 @@ public class DriverStatus {
         }
 
         public void getdata(){
+            cassandraConnector= new CassandraConnector("127.0.0.1",9042);
 
-            ConnectCassandra client = new ConnectCassandra();
-            client.connect("127.0.0.1", 9042);
-            session = client.getSession();
             final Consumer<String, GenericRecord> consumer = new KafkaConsumer<>(properties);
             consumer.subscribe(Arrays.asList(topic));
             try {
@@ -37,16 +36,9 @@ public class DriverStatus {
                     for (ConsumerRecord<String, GenericRecord> record : records) {
 
                         JSONObject jsonObject= new JSONObject(record.value().get("body").toString());
+                        cassandraConnector.insertDriverStatus((int)jsonObject.get("id"),(String) jsonObject.get("status"));
 
 
-                        StringBuilder sb = new StringBuilder("INSERT INTO ")
-                                .append("TrackDriverLive")
-                                .append(".").append("Driverlive").append("(driver_id, driverstatus) ")
-                                .append("VALUES (").append(jsonObject.get("id"))
-                                .append(", '").append(jsonObject.get("status")).append("');");
-
-                        String query = sb.toString();
-                        session.execute(query);
 
 
                     }

@@ -7,8 +7,10 @@ import com.datastax.driver.core.Session;
 public class CassandraConnector {
     private Cluster cluster;
     private Session session;
-    private static final String TABLE_NAME = "drivers_waiting_time";
-    private String KEY_SPACE;
+
+    public CassandraConnector(String node, int port){
+        connect(node,port);
+    }
 
     public void connect(String node, Integer port){    //connection cassandra server with a node and a port
         Cluster.Builder builder = Cluster.builder().addContactPoint(node);
