@@ -23,9 +23,6 @@ public class DbSwitcher {
     }
     private void cassandra_connection(int driver_id,long last_time){
         cassandraConnector.connect("127.0.0.1",9042);
-        cassandraConnector.createKeyspace("DriveSpace","SimpleStrategy",3);
-        cassandraConnector.createTable();
-        cassandraConnector.insertData(driver_id,last_time);
 
 
     }
