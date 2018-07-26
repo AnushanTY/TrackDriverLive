@@ -6,11 +6,11 @@ import org.apache.log4j.BasicConfigurator;
 
 import java.util.Properties;
 
-public class MainTrackDriverLIve {
+public class MainTrackDriverLive {
     public static Properties props;
-    public static String topic1="driver_login_status";
-    public static String topic2="driver_shift_status";
-    public static String topic3="driver_status";
+    public static String topic1=Config.TOPIC_LOGIN;
+    public static String topic2=Config.TOPIC_SHIFT;
+    public static String topic3=Config.TOPIC_DRIVER;
     public static void main(String[] args) {
 
 
@@ -19,16 +19,16 @@ public class MainTrackDriverLIve {
 
         props = new Properties();
 
-        props.put("enable.auto.commit", "true");
-        props.put("auto.commit.interval.ms", "1000");
-        props.put("session.timeout.ms", "30000");
+        props.put("enable.auto.commit", Config.AUTO_COMMIT);
+        props.put("auto.commit.interval.ms", Config.AUTO_COMMIT_INTERVAL);
+        props.put("session.timeout.ms", Config.SESSION_TIME_OUT);
 
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "104.154.186.117:9092");
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, "TrackDriverLiveTest10");
-        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "io.confluent.kafka.serializers.KafkaAvroDeserializer");
-        props.put("schema.registry.url", "http://35.184.181.97:8089");
-        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, Config.BOOTSTRAP_SERVERS_CONFIG);
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, Config.GROUP_ID_CONFIG);
+        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, Config.KEY_DESERIALIZER_CLASS_CONFIG);
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, Config.VALUE_DESERIALIZER_CLASS_CONFIG);
+        props.put("schema.registry.url",Config.SCHEMA_URL);
+        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, Config.AUTO_OFFSET_RESET_CONFIG);
 
 
 
