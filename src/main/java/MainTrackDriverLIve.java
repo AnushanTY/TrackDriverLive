@@ -8,11 +8,8 @@ public class MainTrackDriverLIve {
     public static String topic1="driver_login_status";
     public static String topic2="driver_shift_status";
     public static String topic3="driver_status";
-    public static RequestHandler requestHandler;
-
     public static void main(String[] args) {
 
-        requestHandler = new RequestHandler();
         BasicConfigurator.configure();
 
 
@@ -50,10 +47,7 @@ public class MainTrackDriverLIve {
 
                     DriverShiftStatus driverShiftStatu=new DriverShiftStatus(props,topic2);
                     driverShiftStatu.getdata();
-                    /*requestHandler.send_login_status(Integer
-                            .parseInt(driverShiftStatu.getdata()[0]),driverShiftStatu.getdata()[1]);
-*/
-                    System.out.println(ProcessDriver.getStatus_map());
+
 
                 }
             }
@@ -63,12 +57,11 @@ public class MainTrackDriverLIve {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (true){
-                   DriverStatus driverStatus= new DriverStatus(props,topic3);
-                   driverStatus.getdata();
-                  /*  requestHandler.send_login_status(Integer
-                            .parseInt(driverStatus.getdata()[0]),driverStatus.getdata()[1]);*/
+                while (true) {
+                    DriverStatus driverStatus = new DriverStatus(props, topic3);
+                    driverStatus.getdata();
                 }
+
             }
         }).start();
 
