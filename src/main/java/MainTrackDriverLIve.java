@@ -1,3 +1,6 @@
+import com.pickme.drivertrack.consumers.DriverLoginStatus;
+import com.pickme.drivertrack.consumers.DriverShiftStatus;
+import com.pickme.drivertrack.consumers.DriverStatus;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.log4j.BasicConfigurator;
 
@@ -8,8 +11,16 @@ public class MainTrackDriverLIve {
     public static String topic1="driver_login_status";
     public static String topic2="driver_shift_status";
     public static String topic3="driver_status";
+<<<<<<< Updated upstream
     public static void main(String[] args) {
 
+=======
+    //public static RequestHandler requestHandler;
+
+    public static void main(String[] args) {
+
+        //requestHandler = new RequestHandler();
+>>>>>>> Stashed changes
         BasicConfigurator.configure();
 
 
@@ -47,7 +58,14 @@ public class MainTrackDriverLIve {
 
                     DriverShiftStatus driverShiftStatu=new DriverShiftStatus(props,topic2);
                     driverShiftStatu.getdata();
+<<<<<<< Updated upstream
 
+=======
+                    /*requestHandler.send_login_status(Integer
+                            .parseInt(driverShiftStatu.getdata()[0]),driverShiftStatu.getdata()[1]);
+*/
+                    //System.out.println(ProcessDriver.getStatus_map());
+>>>>>>> Stashed changes
 
                 }
             }

@@ -1,3 +1,5 @@
+package com.pickme.drivertrack.consumers;
+
 import CassandraDBHelper.ConnectCassandra;
 import com.datastax.driver.core.Session;
 import org.apache.avro.generic.GenericRecord;
