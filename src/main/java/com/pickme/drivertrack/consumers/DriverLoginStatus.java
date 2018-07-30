@@ -41,6 +41,8 @@ public class DriverLoginStatus {
                     cassandraConnector.insertLoginStatus((int)jsonObject.get("id"),(String) jsonObject.get("status"));
 
 
+
+
                 }
 
 

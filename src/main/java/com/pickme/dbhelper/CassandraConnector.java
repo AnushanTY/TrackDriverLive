@@ -64,12 +64,12 @@ public class CassandraConnector {
         session.execute(query);
     }
 
-    public  void insertDriverlocationchanged(int driver_id, Long time){
+    public  void insertDriverlocationchanged(int driver_id, long time){
         StringBuilder sb = new StringBuilder("INSERT INTO ")
                 .append("TrackDriverLive")
                 .append(".").append("Driverlive").append("(driver_id,last_heartbeat ) ")
                 .append("VALUES (").append(driver_id)
-                .append(", '").append(time).append("');");
+                .append(", ").append(time).append(");");
 
         String query = sb.toString();
         session.execute(query);

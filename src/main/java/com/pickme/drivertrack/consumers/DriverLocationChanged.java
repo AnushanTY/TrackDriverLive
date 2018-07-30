@@ -46,13 +46,11 @@ public class DriverLocationChanged {
 
                     Long currentTme  = Calendar.getInstance().getTimeInMillis();
 
-                    Long ActiveTime = (Long) (currentTme - timestap);
+                    Long activeTime =  (currentTme - timestap);
 
-                    System.out.println(ActiveTime+ "     timeStam   "+ timestap +" current time"+ currentTme);
+                    System.out.println(activeTime+ "     timeStam   "+ timestap +" current time"+ currentTme);
 
-
-
-                    cassandraConnector.insertDriverlocationchanged((int) jsonObject.get("driver_id"), (Long)ActiveTime);
+                    cassandraConnector.insertDriverlocationchanged((int) jsonObject.get("driver_id"), activeTime);
 
 
                 }

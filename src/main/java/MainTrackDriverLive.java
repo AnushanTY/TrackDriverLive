@@ -1,4 +1,5 @@
 import com.pickme.config.Config;
+import com.pickme.dbhelper.CassandraConnector;
 import com.pickme.drivertrack.consumers.DriverLocationChanged;
 import com.pickme.drivertrack.consumers.DriverLoginStatus;
 import com.pickme.drivertrack.consumers.DriverShiftStatus;
@@ -81,6 +82,11 @@ public class MainTrackDriverLive {
                 }
             }
         }).start();
+
+
+
+
+
 
 
     }
