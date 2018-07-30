@@ -46,7 +46,7 @@ public class CassandraConnector {
     public void insertLoginStatus(int driver_id , String status){
         StringBuilder sb = new StringBuilder("INSERT INTO ")
                 .append("TrackDriverLive")
-                .append(".").append("Driverlive").append("(driver_id,shiftstatus ) ")
+                .append(".").append("Driverlive").append("(driver_id,loginstatus ) ")
                 .append("VALUES (").append(driver_id)
                 .append(", '").append(status).append("');");
 
@@ -56,9 +56,20 @@ public class CassandraConnector {
     public void insertDriverStatus(int driver_id , String status){
         StringBuilder sb = new StringBuilder("INSERT INTO ")
                 .append("TrackDriverLive")
-                .append(".").append("Driverlive").append("(driver_id,shiftstatus ) ")
+                .append(".").append("Driverlive").append("(driver_id,driverstatus ) ")
                 .append("VALUES (").append(driver_id)
                 .append(", '").append(status).append("');");
+
+        String query = sb.toString();
+        session.execute(query);
+    }
+
+    public  void insertDriverlocationchanged(int driver_id, Long time){
+        StringBuilder sb = new StringBuilder("INSERT INTO ")
+                .append("TrackDriverLive")
+                .append(".").append("Driverlive").append("(driver_id,last_heartbeat ) ")
+                .append("VALUES (").append(driver_id)
+                .append(", '").append(time).append("');");
 
         String query = sb.toString();
         session.execute(query);

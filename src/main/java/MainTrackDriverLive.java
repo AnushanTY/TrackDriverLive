@@ -1,4 +1,5 @@
 import com.pickme.config.Config;
+import com.pickme.drivertrack.consumers.DriverLocationChanged;
 import com.pickme.drivertrack.consumers.DriverLoginStatus;
 import com.pickme.drivertrack.consumers.DriverShiftStatus;
 import com.pickme.drivertrack.consumers.DriverStatus;
@@ -12,6 +13,7 @@ public class MainTrackDriverLive {
     public static String topic1=Config.TOPIC_LOGIN;
     public static String topic2=Config.TOPIC_SHIFT;
     public static String topic3=Config.TOPIC_DRIVER;
+    public static String topic4=Config.TOPIC_DRIVER_LOCATION_CHANGED;
     public static void main(String[] args) {
 
 
@@ -70,7 +72,15 @@ public class MainTrackDriverLive {
             }
         }).start();
 
-
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    DriverLocationChanged driverLocationChanged=new DriverLocationChanged(props,topic4);
+                    driverLocationChanged.getdata();
+                }
+            }
+        }).start();
 
 
     }
