@@ -4,11 +4,11 @@ import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Session;
 
 
-public class CassandraConnector {
+public class DriverLive_Cassandra {
     private Cluster cluster;
     private Session session;
 
-    public CassandraConnector(String node, int port){
+    public DriverLive_Cassandra(String node, int port){
         connect(node,port);
     }
 
