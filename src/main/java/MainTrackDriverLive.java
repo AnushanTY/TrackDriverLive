@@ -1,6 +1,6 @@
 import com.pickme.config.Config;
 import com.pickme.display.Display;
-import com.pickme.drivertrack.consumers.DriverConsumer;
+
 import org.apache.kafka.clients.consumer.*;
 import org.apache.log4j.BasicConfigurator;
 
@@ -18,7 +18,7 @@ public class MainTrackDriverLive {
         BasicConfigurator.configure();
 
 
-       /* props = new Properties();
+    /*   props = new Properties();
 
         props.put("enable.auto.commit", Config.AUTO_COMMIT);
         props.put("auto.commit.interval.ms", Config.AUTO_COMMIT_INTERVAL);
@@ -31,7 +31,7 @@ public class MainTrackDriverLive {
         props.put("schema.registry.url",Config.SCHEMA_URL);
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, Config.AUTO_OFFSET_RESET_CONFIG);
 
-        DriverConsumer driverConsumer= new DriverConsumer(props, topicLogin,topicShift,topicDriver,topicDriverLocationChanged);
+        Drr driverConsumer= new DriverConsumer(props, topicLogin,topicShift,topicDriver,topicDriverLocationChanged);
         driverConsumer.getdata();
 */
 
