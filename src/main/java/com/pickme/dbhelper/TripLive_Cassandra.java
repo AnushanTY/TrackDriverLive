@@ -7,6 +7,11 @@ public class TripLive_Cassandra {
     private Cluster cluster;
     private Session session;
 
+
+    public TripLive_Cassandra(String node, int port){
+        connect(node,port);
+    }
+
     public void connect(String node , Integer port){
        Cluster.Builder builder =  Cluster.builder().addContactPoint(node);
        if(builder != null){

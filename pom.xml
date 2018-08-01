@@ -137,6 +137,22 @@
                                 <param> com.pickme.events.driver.DriverLoginStatusChanged </param>
                                 <param> com.pickme.events.driver.DriverStatusChanged</param>
                                 <param>com.pickme.events.driver.DriverLocationChanged </param>
+
+                                <param>com.pickme.events.trip.TripCreated</param>
+                                <param>com.pickme.events.trip.NoDriverFound</param>
+                                <param>  com.pickme.events.trip.DriverAssigned  </param>
+                                <param> com.pickme.events.trip.TripCancelled  </param>
+                                <param> com.pickme.events.trip.TripReceivedByDriver  </param>
+                                <param> com.pickme.events.trip.TripRejectedByDriver  </param>
+                                <param> com.pickme.events.trip.TripAccepted  </param>
+                                <param>com.pickme.events.trip.DriverArrived  </param>
+                                <param>  com.pickme.events.trip.TripStarted  </param>
+                                <param> com.pickme.events.trip.TripEnded  </param>
+                                <param>  com.pickme.events.trip.TripCompleted </param>
+                                <param>  com.pickme.events.trip.DriverSelected   </param>
+                                <param>  com.pickme.events.trip.TripCancelRequest  </param>
+                                <param> com.pickme.events.trip.TripNotificationTimedOut  </param>
+                                <param> com.pickme.events.trip.DriverPoolNoDriverFound </param>
                             </subjectPatterns>
                         </configuration>
                     </execution>

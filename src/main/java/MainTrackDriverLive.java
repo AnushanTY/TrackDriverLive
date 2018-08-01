@@ -1,5 +1,5 @@
 import com.pickme.config.Config;
-import com.pickme.drivertrack.consumers.DriverConsumer;
+import com.pickme.drivertrack.consumers.DriverAndTripConsumer;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.log4j.BasicConfigurator;
 
@@ -11,6 +11,7 @@ public class MainTrackDriverLive {
     public static String topicShift=Config.TOPIC_SHIFT;
     public static String topicDriver=Config.TOPIC_DRIVER;
     public static String topicDriverLocationChanged=Config.TOPIC_DRIVER_LOCATION_CHANGED;
+    public static  String topicTrip=Config.TOPIC_TRIP;
     public static void main(String[] args) {
 
 
@@ -30,9 +31,10 @@ public class MainTrackDriverLive {
         props.put("schema.registry.url",Config.SCHEMA_URL);
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, Config.AUTO_OFFSET_RESET_CONFIG);
 
-        DriverConsumer driverConsumer= new DriverConsumer(props, topicLogin,topicShift,topicDriver,topicDriverLocationChanged);
-        driverConsumer.getdata();
 
+
+        DriverAndTripConsumer driverConsumer= new DriverAndTripConsumer(props, topicLogin,topicShift,topicDriver,topicDriverLocationChanged,topicTrip);
+        driverConsumer.getdata();
 
 
 

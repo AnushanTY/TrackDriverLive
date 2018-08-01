@@ -3,6 +3,7 @@ package com.pickme.drivertrack.consumers;
 import com.datastax.driver.core.Session;
 import com.pickme.config.Config;
 import com.pickme.dbhelper.DriverLive_Cassandra;
+import com.pickme.dbhelper.TripLive_Cassandra;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -14,38 +15,43 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Properties;
 
-public class DriverConsumer {
+public class DriverAndTripConsumer {
         private DriverLive_Cassandra driverLive_cassandra;
+        private TripLive_Cassandra tripLive_cassandra;
         private Session session;
         private Properties properties;
         private  String topicLogin;
         private String topicShift;
         private String topicDriver;
         private String topicDriverLocationChanged;
+        private String topicTrip;
         private String[] status_array;
 
-        public DriverConsumer(Properties properties, String topicLogin,String topicShift,String topicDriver,String topicDriverLocationChanged) {
+        public DriverAndTripConsumer(Properties properties, String topicLogin, String topicShift, String topicDriver, String topicDriverLocationChanged, String topicTrip) {
             status_array = new String[2];
             this.properties = properties;
             this.topicDriver=topicDriver;
             this.topicDriverLocationChanged=topicDriverLocationChanged;
             this.topicLogin=topicLogin;
             this.topicShift=topicShift;
+            this.topicTrip=topicTrip;
 
         }
 
         public void getdata(){
             driverLive_cassandra= new DriverLive_Cassandra(Config.ADDRESS,Config.PORT);
-
+            tripLive_cassandra=new TripLive_Cassandra(Config.ADDRESS,Config.PORT);
             final Consumer<String, GenericRecord> consumer = new KafkaConsumer<>(properties);
-            consumer.subscribe(Arrays.asList(topicLogin,topicDriver,topicShift,topicDriverLocationChanged));
+            consumer.subscribe(Arrays.asList(topicLogin,topicDriver,topicShift,topicDriverLocationChanged,topicTrip));
             try {
                 while (true) {
                     ConsumerRecords<String, GenericRecord> records = consumer.poll(100000);
                     for (ConsumerRecord<String, GenericRecord> record : records) {
+                        System.out.println(record.value().get("type"));
 
+                        if (record.value().get("type").toString().equals("driver_status_changed")) {
 
-                        if (record.value().get("type").equals("driver_status_changed")) {
+                            System.out.println("===================================================================================================");
 
                             JSONObject jsonObject = new JSONObject(record.value().get("body").toString());
                             driverLive_cassandra.insertDriverStatus((int) jsonObject.get("id"), (String) jsonObject.get("status"));
@@ -53,16 +59,18 @@ public class DriverConsumer {
 
                         }
 
-                        if(record.value().get("type").equals("driver_shift_status_changed")) {
+                        if(record.value().get("type").toString().equals("driver_shift_status_changed")) {
+
+                            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
                             JSONObject jsonObject = new JSONObject(record.value().get("body").toString());
 
                             driverLive_cassandra.insertShiftStatus((int) jsonObject.get("driver_id"), (String) jsonObject.get("status"));
 
 
-                        }if(record.value().get("type").equals("driver_location_changed")) {
+                        }if(record.value().get("type").toString().equals("driver_location_changed")) {
 
-
+                            System.out.println("--------------------------------------------------------------------------------");
                             JSONObject jsonObject = new JSONObject(record.value().get("body").toString());
 
                             Long timestap = (Long) record.value().get("created_at")/1000000;
@@ -77,12 +85,44 @@ public class DriverConsumer {
                         }
 
 
-                        if(record.value().get("type").equals("driver_login_status_changed")) {
+                        if(record.value().get("type").toString().equals("driver_login_status_changed")) {
+
+                            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
                             JSONObject jsonObject= new JSONObject(record.value().get("body").toString());
 
                             driverLive_cassandra.insertLoginStatus((int)jsonObject.get("id"),(String) jsonObject.get("status"));
                         }
+
+
+                        if(record.value().get("type").toString().equals("trip_started")){
+
+
+                            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                            JSONObject jsonObject = new JSONObject(record.value().get("body").toString());
+
+                            Long timestap = (Long) record.value().get("created_at");
+
+
+
+                            tripLive_cassandra.insert_trip_start((int) jsonObject.get("driver_id"), timestap);
+                        }
+
+                        if(record.value().get("type").toString().equals("trip_ended")){
+
+                            System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                            JSONObject jsonObject = new JSONObject(record.value().get("body").toString());
+
+                            Long timestap = (Long) record.value().get("created_at");
+
+
+
+                            tripLive_cassandra.insert_trip_end((int) jsonObject.get("driver_id"), timestap);
+                        }
+
+
+
+
 
                     }
                 }
