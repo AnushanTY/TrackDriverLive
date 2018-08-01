@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-08-01T12:58:52</date>
+  <millis>1533108532648</millis>
+  <sequence>0</sequence>
+  <logger>java.lang.Class</logger>
+  <level>INFO</level>
+  <class>MainTrackDriverLive</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>doing stuff</message>
+</record>
+<record>
+  <date>2018-08-01T12:59:10</date>
+  <millis>1533108550530</millis>
+  <sequence>1</sequence>
+  <logger>java.lang.Class</logger>
+  <level>ALL</level>
+  <class>MainTrackDriverLive</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>ConsumerWork</message>
+  <exception>
+    <message>com.datastax.driver.core.exceptions.SyntaxError: line 1:100 no viable alternative at input ')' (...) VALUES (185, 1533104267201,[no])...)</message>
+    <frame>
+      <class>com.datastax.driver.core.exceptions.SyntaxError</class>
+      <method>copy</method>
+      <line>58</line>
+    </frame>
+    <frame>
+      <class>com.datastax.driver.core.exceptions.SyntaxError</class>
+      <method>copy</method>
+      <line>24</line>
+    </frame>
+    <frame>
+      <class>com.datastax.driver.core.DriverThrowables</class>
+      <method>propagateCause</method>
+      <line>37</line>
+    </frame>
+    <frame>
+      <class>com.datastax.driver.core.DefaultResultSetFuture</class>
+      <method>getUninterruptibly</method>
+      <line>245</line>
+    </frame>
+    <frame>
+      <class>com.datastax.driver.core.AbstractSession</class>
+      <method>execute</method>
+      <line>64</line>
+    </frame>
+    <frame>
+      <class>com.datastax.driver.core.AbstractSession</class>
+      <method>execute</method>
+      <line>39</line>
+    </frame>
+    <frame>
+      <class>com.pickme.dbhelper.DriverLive_Cassandra</class>
+      <method>insert_trip_start</method>
+      <line>89</line>
+    </frame>
+    <frame>
+      <class>com.pickme.drivertrack.consumers.DriverAndTripConsumer</class>
+      <method>getdata</method>
+      <line>105</line>
+    </frame>
+    <frame>
+      <class>MainTrackDriverLive</class>
+      <method>main</method>
+      <line>66</line>
+    </frame>
+  </exception>
+</record>
+</log>

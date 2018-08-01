@@ -29,7 +29,8 @@ public class Display implements ActionListener{
     public Display() {
 
 
-        db.connect(Config.ADDRESS,Config.PORT);
+        db = new DriverLive_Cassandra(Config.ADDRESS,Config.PORT);
+
 
         query= new String[]{"driverstatus='A'", "loginstatus='A'", "shiftstatus='I'", "last_heartbeat<=20", "trip_start='no'"};
         selected= new Boolean[]{false, false, false, false, false};
