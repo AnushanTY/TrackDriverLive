@@ -105,7 +105,7 @@ public class DriverLive_Cassandra {
                 .append(".").append("Driverlive").append("(driver_id,trip_start,trip_end ) ")
                 .append("VALUES (").append(driver_id)
                 .append(", ").append(trip_start).append(",")
-                .append((String) null).append(");");
+                .append((String) "no").append(");");
 
         String query = sb.toString();
         session.execute(query);
@@ -116,7 +116,7 @@ public class DriverLive_Cassandra {
                 .append("TrackDriverLive")
                 .append(".").append("Driverlive").append("(driver_id,trip_start,trip_end ) ")
                 .append("VALUES (").append(driver_id)
-                .append(",").append((String)null)
+                .append(",").append((String)"no")
                 .append(", ").append(trip_end).append(");");
 
         String query = sb.toString();
