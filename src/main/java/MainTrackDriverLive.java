@@ -1,4 +1,5 @@
 import com.pickme.config.Config;
+import com.pickme.display.Display;
 import com.pickme.drivertrack.consumers.DriverAndTripConsumer;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.log4j.BasicConfigurator;
@@ -22,7 +23,7 @@ public class MainTrackDriverLive {
 
     static {
         try {
-            fh = new FileHandler("/home/pickme-1033/Downloads/TrackDriverLive/src/main/java/com/pickme/local/logger.txt");
+            fh = new FileHandler("/home/pickme-1031/IdeaProjects/TrackDriverLive/src/main/java/com/pickme/local/logger.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -31,8 +32,11 @@ public class MainTrackDriverLive {
 
     public static void main(String[] args) {
 
+        Display display = new Display();
+        display.run();
 
-        BasicConfigurator.configure();
+
+       BasicConfigurator.configure();
 
 
         props = new Properties();
@@ -64,6 +68,7 @@ public class MainTrackDriverLive {
         }catch (Exception e){
             logger.log(Level.ALL,"ConsumerWork",e);
         }
+
 
 
 

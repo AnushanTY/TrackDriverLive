@@ -76,13 +76,14 @@ public class DriverLive_Cassandra {
     }
 
 
+
     public void insert_trip_start(int driver_id , long trip_start){
         StringBuilder sb = new StringBuilder("INSERT INTO ")
                 .append("TrackDriverLive")
                 .append(".").append("Driverlive").append("(driver_id,trip_start,trip_end ) ")
                 .append("VALUES (").append(driver_id)
                 .append(", ").append(trip_start).append(",")
-                .append((String) "no").append(");");
+                .append("no").append(");");
 
         String query = sb.toString();
         session.execute(query);
@@ -93,7 +94,7 @@ public class DriverLive_Cassandra {
                 .append("TrackDriverLive")
                 .append(".").append("Driverlive").append("(driver_id,trip_start,trip_end ) ")
                 .append("VALUES (").append(driver_id)
-                .append(",").append((String)"no")
+                .append(",").append("no")
                 .append(", ").append(trip_end).append(");");
 
         String query = sb.toString();
