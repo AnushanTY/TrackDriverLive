@@ -1,5 +1,6 @@
 import com.pickme.config.Config;
 import com.pickme.display.Display;
+import com.pickme.display_dashboard.Dashboard;
 import com.pickme.drivertrack.consumers.DriverAndTripConsumer;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.log4j.BasicConfigurator;
@@ -32,8 +33,12 @@ public class MainTrackDriverLive {
 
     public static void main(String[] args) {
 
-        Display display = new Display();
-        display.run();
+        //Display display = new Display();  Displaying filtering.
+        //display.run();
+
+
+        Dashboard dashboard = new Dashboard();
+        dashboard.run();
 
 
        BasicConfigurator.configure();
