@@ -19,7 +19,7 @@ public class Display implements ActionListener{
     DefaultListModel<String> model;
     private JPanel jPanel;
     private JLabel jlable;
-    private JTextArea drier_text;
+    private JTextArea driver_text;
     private JButton button1;
     private String[] query;
     private Boolean[] selected;
@@ -48,7 +48,6 @@ public class Display implements ActionListener{
                     selected[2]=false;
                     process(selected);
                 }
-
 
             }
         });
@@ -124,21 +123,33 @@ public class Display implements ActionListener{
 
     private void process(Boolean[] selected) {
         String sql="select driver_id from TrackDriverLive.Driverlive where ";
+
         for (int i=0;i<selected.length;i++){
             if(selected[i]){
 
+
                     sql+=query[i]+"  AND ";
 
+                  /*  if(i==4){
+                        db.getSession().execute("SELECT trip_end from TrackDriverLive.Driverlive WHERE "+query[i]);
+                    }
+*/
             }
 
         }
         sql=sql.substring(0,sql.length()-5)+" allow filtering";
 
+        driver_text.setText("List of Drivers (driver_id): \n");
 
         rs = db.getSession().execute(sql);
+        int count = 1;
         for(Row row : rs){
 
-            drier_text.setText(row.getString("driver_id"));
+
+            int driver_id = row.getInt("driver_id");
+            driver_text.setText(driver_text.getText()+"\n"+ count+". "+driver_id+"");
+            count++;
+
         }
 
     }
@@ -148,7 +159,7 @@ public class Display implements ActionListener{
         jFrame = new JFrame("Driver Tracker");
         jFrame.setContentPane(new Display().jPanel);
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        jFrame.pack();
+        jFrame.setSize(1600,1600);
         jFrame.setVisible(true);
     }
 
@@ -156,11 +167,11 @@ public class Display implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
       if(check_shift_status.isSelected()){
-          drier_text.setText("Shift Selected");
+          driver_text.setText("Shift Selected");
           System.out.println("Shift");
       }
       else if(!check_shift_status.isSelected()){
-          drier_text.setText(null);
+          driver_text.setText(null);
       }
 
 
