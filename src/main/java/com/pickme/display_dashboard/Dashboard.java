@@ -1,17 +1,16 @@
 package com.pickme.display_dashboard;
 
 import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Row;
 import com.pickme.config.Config;
-import com.pickme.dbhelper.DriverLive_Cassandra;
-import com.pickme.display.Display;
+import com.pickme.dbhelper.DatabaseSwitcher;
+import com.pickme.process.Calculation;
+
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class Dashboard {
     private JTextArea dashboard;
@@ -19,16 +18,18 @@ public class Dashboard {
     private JTextField time_text;
     private JButton apply_show;
     private int waiting_time;   //time in minutes
-    private DriverLive_Cassandra driverLive_cassandra;
+    private DatabaseSwitcher databaseSwitcher;
     private ResultSet rs;
     private JFrame jFrame;
+    private Calculation calculation;
     private Config config;
 
 
 
     public Dashboard() {
+
         config=new Config();
-        driverLive_cassandra= new DriverLive_Cassandra((String) config.getProp().getProperty("ADDRESS"),Integer.parseInt(config.getProp().getProperty("PORT")));
+        databaseSwitcher= new DatabaseSwitcher("CASSANDRA");
 
         apply_show.addActionListener(new ActionListener() {
             @Override
@@ -37,7 +38,7 @@ public class Dashboard {
 
                     if(time_text.getText() != null  && time_text.getText().matches("[0-9]+") ) {
 
-                        query(waiting_time);
+                        showing_output(waiting_time);
 
                     }
                     else{
@@ -59,31 +60,18 @@ public class Dashboard {
     }
 
 
-    private void query(int waiting_time){
-        dashboard.setText("List of the drivers waiting more than "+waiting_time +" minutes (driver_id)\n");
+    private void showing_output(int waiting_time){
 
-        String query = "SELECT driver_id,trip_end from TrackDriverLive.Driverlive WHERE driverstatus='A' AND loginstatus='A' AND shiftstatus='I' AND last_heartbeat<=20 AND trip_start=0 allow filtering";
-        rs = driverLive_cassandra.getSession().execute(query);
+        dashboard.setText("List of the drivers waiting more than "+waiting_time+" minutes");
+        calculation = new Calculation();
+        ArrayList<String> resultList=calculation.processDriverID(waiting_time,databaseSwitcher);
+        for (String s:resultList){
 
-        int count = 1;
-        for(Row row : rs){
-            if(check_eligible(row.getLong("trip_end"),waiting_time)){
-                dashboard.setText(dashboard.getText() + "\n" + count+". "+row.getInt("driver_id"));
-                count++;
-            }
+            dashboard.setText(dashboard.getText() + "/n" + s);
         }
-
 
     }
 
-    private boolean check_eligible(long trip_end,int waiting_time){
-        boolean return_element = false;
-        long current_time =  Calendar.getInstance().getTimeInMillis( );
-        if(current_time-trip_end>=waiting_time*60*1000){
-            return_element = true;
-        }
-        return return_element;
-    }
 
 
 }

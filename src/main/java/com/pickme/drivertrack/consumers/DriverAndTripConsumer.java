@@ -2,7 +2,8 @@ package com.pickme.drivertrack.consumers;
 
 import com.datastax.driver.core.Session;
 import com.pickme.config.Config;
-import com.pickme.dbhelper.DriverLive_Cassandra;
+import com.pickme.dbhelper.DatabaseSwitcher;
+import com.pickme.dbhelper.DriverLiveCassandra;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -15,7 +16,7 @@ import java.util.Calendar;
 import java.util.Properties;
 
 public class DriverAndTripConsumer {
-        private DriverLive_Cassandra driverLive_cassandra;
+        private DatabaseSwitcher databaseSwitcher;
         private Config config;
         private Session session;
         private Properties properties;
@@ -39,7 +40,7 @@ public class DriverAndTripConsumer {
 
         public void getdata(){
             config=new Config();
-            driverLive_cassandra= new DriverLive_Cassandra((String) config.getProp().getProperty("ADDRESS"),Integer.parseInt(config.getProp().getProperty("PORT")));
+            databaseSwitcher= new DatabaseSwitcher("CASSASNDRA");
             final Consumer<String, GenericRecord> consumer = new KafkaConsumer<>(properties);
             consumer.subscribe(Arrays.asList(topicLogin,topicDriver,topicShift,topicDriverLocationChanged,topicTrip));
             try {
@@ -53,7 +54,7 @@ public class DriverAndTripConsumer {
 
 
                             JSONObject jsonObject = new JSONObject(record.value().get("body").toString());
-                            driverLive_cassandra.insertDriverStatus((int) jsonObject.get("id"), (String) jsonObject.get("status"));
+                            databaseSwitcher.insertDriverStatus((int) jsonObject.get("id"), (String) jsonObject.get("status"));
 
 
                         }
@@ -64,7 +65,7 @@ public class DriverAndTripConsumer {
 
                             JSONObject jsonObject = new JSONObject(record.value().get("body").toString());
 
-                            driverLive_cassandra.insertShiftStatus((int) jsonObject.get("driver_id"), (String) jsonObject.get("status"));
+                            databaseSwitcher.insertShiftStatus((int) jsonObject.get("driver_id"), (String) jsonObject.get("status"));
 
 
                         }if(record.value().get("type").toString().equals("driver_location_changed")) {
@@ -80,7 +81,7 @@ public class DriverAndTripConsumer {
 
                             System.out.println(activeTime+ "     timeStam   "+ timestap +" current time"+ currentTme);
 
-                            driverLive_cassandra.insertDriverlocationchanged((int) jsonObject.get("driver_id"), activeTime);
+                            databaseSwitcher.insertDriverlocationchanged((int) jsonObject.get("driver_id"), activeTime);
                         }
 
 
@@ -90,7 +91,7 @@ public class DriverAndTripConsumer {
 
                             JSONObject jsonObject= new JSONObject(record.value().get("body").toString());
 
-                            driverLive_cassandra.insertLoginStatus((int)jsonObject.get("id"),(String) jsonObject.get("status"));
+                            databaseSwitcher.insertLoginStatus((int)jsonObject.get("id"),(String) jsonObject.get("status"));
                         }
 
 
@@ -104,7 +105,7 @@ public class DriverAndTripConsumer {
 
 
 
-                            driverLive_cassandra.insert_trip_start((int) jsonObject.get("driver_id"), timestap);
+                            databaseSwitcher.insertTripStart((int) jsonObject.get("driver_id"), timestap);
                         }
 
                         if(record.value().get("type").toString().equals("trip_ended")){
@@ -116,7 +117,7 @@ public class DriverAndTripConsumer {
 
 
 
-                            driverLive_cassandra.insert_trip_end((int) jsonObject.get("driver_id"), timestap);
+                            databaseSwitcher.insertTripEnd((int) jsonObject.get("driver_id"), timestap);
                         }
 
 
