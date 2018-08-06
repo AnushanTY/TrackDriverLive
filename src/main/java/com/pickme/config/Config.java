@@ -1,21 +1,45 @@
 package com.pickme.config;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 public class Config {
-    public static final String ADDRESS = "localhost";
-    public static final int PORT = 9042;
-    public static final String BOOTSTRAP_SERVERS_CONFIG = "104.154.186.117:9092";
-    public static final String GROUP_ID_CONFIG = "TripAndDriverConsumer";
-    public static final String KEY_DESERIALIZER_CLASS_CONFIG = "org.apache.kafka.common.serialization.StringDeserializer";
-    public static final String VALUE_DESERIALIZER_CLASS_CONFIG = "io.confluent.kafka.serializers.KafkaAvroDeserializer";
-    public static final String SCHEMA_URL = "http://35.184.181.97:8089";
-    public static final String AUTO_OFFSET_RESET_CONFIG = "earliest";
-    public static final String AUTO_COMMIT = "true";
-    public static final String AUTO_COMMIT_INTERVAL = "1000";
-    public static final String SESSION_TIME_OUT = "30000";
-    public static final String TOPIC_LOGIN = "driver_login_status";
-    public static final String TOPIC_SHIFT = "driver_shift_status";
-    public static final String TOPIC_DRIVER ="driver_status";
-    public static final String TOPIC_DRIVER_LOCATION_CHANGED ="driver_locations";
-    public static final String TOPIC_TRIP="trip";
+
+    String file = "/home/pickme-1031/IdeaProjects/TrackDriverLive/src/prop.properties";
+    Properties prop = new Properties();
+    InputStream input = null;
+
+    public Config(){
+        load();
+    }
+
+    private void load(){
+        try {
+
+            input = new FileInputStream(file);
+
+            // load a properties file
+            prop.load(input);
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+
+    public Properties getProp(){
+        return prop;
+    }
 
 }
