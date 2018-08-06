@@ -25,11 +25,13 @@ public class Display implements ActionListener{
     private Boolean[] selected;
     private DriverLive_Cassandra db;
     private ResultSet rs; //query results
+    private Config config;
 
     public Display() {
 
+        config=new Config();
+        db= new DriverLive_Cassandra((String) config.getProp().getProperty("ADDRESS"),Integer.parseInt(config.getProp().getProperty("PORT")));
 
-        db = new DriverLive_Cassandra(Config.ADDRESS,Config.PORT);
 
 
         query= new String[]{"driverstatus='A'", "loginstatus='A'", "shiftstatus='I'", "last_heartbeat<=20", "trip_start='no'"};

@@ -1,78 +1,53 @@
 import com.pickme.config.Config;
-import com.pickme.display.Display;
 import com.pickme.display_dashboard.Dashboard;
 import com.pickme.drivertrack.consumers.DriverAndTripConsumer;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.log4j.BasicConfigurator;
-
-import java.io.IOException;
 import java.util.Properties;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class MainTrackDriverLive {
     private static Properties props;
-    private static String topicLogin=Config.TOPIC_LOGIN;
-    private static String topicShift=Config.TOPIC_SHIFT;
-    private static String topicDriver=Config.TOPIC_DRIVER;
-    private static String topicDriverLocationChanged=Config.TOPIC_DRIVER_LOCATION_CHANGED;
-    private static  String topicTrip=Config.TOPIC_TRIP;
-    private static Logger logger=Logger.getLogger(MainTrackDriverLive.class.getClass().getName());
+    private static String topicLogin;
+    private static String topicShift;
+    private static String topicDriver;
+    private static String topicDriverLocationChanged;
+    private static  String topicTrip;
 
-    private static FileHandler fh;
-
-    static {
-        try {
-            fh = new FileHandler("/home/pickme-1031/IdeaProjects/TrackDriverLive/src/main/java/com/pickme/local/logger.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
 
     public static void main(String[] args) {
-
-        //Display display = new Display();  Displaying filtering.
-        //display.run();
 
 
         Dashboard dashboard = new Dashboard();
         dashboard.run();
 
 
-       BasicConfigurator.configure();
-
+        BasicConfigurator.configure();
+        Config config=new Config();
 
         props = new Properties();
 
-        props.put("enable.auto.commit", Config.AUTO_COMMIT);
-        props.put("auto.commit.interval.ms", Config.AUTO_COMMIT_INTERVAL);
-        props.put("session.timeout.ms", Config.SESSION_TIME_OUT);
+        props.put("enable.auto.commit", config.getProp().getProperty("AUTO_COMMIT"));
+        props.put("auto.commit.interval.ms", config.getProp().getProperty("AUTO_COMMIT_INTERVAL"));
+        props.put("session.timeout.ms", config.getProp().getProperty("SESSION_TIME_OUT"));
 
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, Config.BOOTSTRAP_SERVERS_CONFIG);
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, Config.GROUP_ID_CONFIG);
-        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, Config.KEY_DESERIALIZER_CLASS_CONFIG);
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, Config.VALUE_DESERIALIZER_CLASS_CONFIG);
-        props.put("schema.registry.url",Config.SCHEMA_URL);
-        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, Config.AUTO_OFFSET_RESET_CONFIG);
-        // Send logger output to our FileHandler.
-        logger.addHandler(fh);
-        // Request that every detail gets logged.
-        logger.setLevel(Level.ALL);
-        // Log a simple INFO message.
-        logger.info("doing stuff");
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, config.getProp().getProperty("BOOTSTRAP_SERVERS_CONFIG"));
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, config.getProp().getProperty("GROUP_ID_CONFIG"));
+        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, config.getProp().getProperty("KEY_DESERIALIZER_CLASS_CONFIG"));
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, config.getProp().getProperty("VALUE_DESERIALIZER_CLASS_CONFIG"));
+        props.put("schema.registry.url",config.getProp().getProperty("SCHEMA_URL"));
+        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG,config.getProp().getProperty("AUTO_OFFSET_RESET_CONFIG"));
 
 
+        topicLogin=config.getProp().getProperty("TOPIC_LOGIN");
+        topicShift=config.getProp().getProperty("TOPIC_SHIFT");
+        topicDriver=config.getProp().getProperty("TOPIC_DRIVER");
+        topicDriverLocationChanged=config.getProp().getProperty("TOPIC_DRIVER_LOCATION_CHANGED");
+        topicTrip=config.getProp().getProperty("TOPIC_TRIP");
         DriverAndTripConsumer driverConsumer= new DriverAndTripConsumer(props, topicLogin,topicShift,topicDriver,topicDriverLocationChanged,topicTrip);
 
-        try {
+        driverConsumer.getdata();
 
-            driverConsumer.getdata();
-
-        }catch (Exception e){
-            logger.log(Level.ALL,"ConsumerWork",e);
-        }
 
 
 
