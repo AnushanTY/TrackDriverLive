@@ -16,6 +16,7 @@ import java.util.Properties;
 
 public class DriverAndTripConsumer {
         private DriverLive_Cassandra driverLive_cassandra;
+        private Config config;
         private Session session;
         private Properties properties;
         private  String topicLogin;
@@ -37,7 +38,8 @@ public class DriverAndTripConsumer {
         }
 
         public void getdata(){
-            driverLive_cassandra= new DriverLive_Cassandra(Config.ADDRESS,Config.PORT);
+            config=new Config();
+            driverLive_cassandra= new DriverLive_Cassandra((String) config.getProp().getProperty("ADDRESS"),Integer.parseInt(config.getProp().getProperty("PORT")));
             final Consumer<String, GenericRecord> consumer = new KafkaConsumer<>(properties);
             consumer.subscribe(Arrays.asList(topicLogin,topicDriver,topicShift,topicDriverLocationChanged,topicTrip));
             try {
