@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class Config {
 
-    String file = "/home/pickme-1031/IdeaProjects/TrackDriverLive/src/prop.properties";
+    String file = "/home/pickme-1033/Downloads/TrackDriverLive/src/prop.properties";
     Properties prop = new Properties();
     InputStream input = null;
 
