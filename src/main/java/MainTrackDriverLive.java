@@ -3,7 +3,12 @@ import com.pickme.display_dashboard.Dashboard;
 import com.pickme.drivertrack.consumers.DriverAndTripConsumer;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.log4j.BasicConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.naming.ldap.PagedResultsControl;
 import java.util.Properties;
+
 
 public class MainTrackDriverLive {
     private static Properties props;
@@ -12,8 +17,9 @@ public class MainTrackDriverLive {
     private static String topicDriver;
     private static String topicDriverLocationChanged;
     private static  String topicTrip;
-
-
+    private static String topicVehicleAssign;
+    private static String topicDHstatus;
+    private  static Logger logger= LoggerFactory.getLogger(MainTrackDriverLive.class.getClass().getName());
 
     public static void main(String[] args) {
 
@@ -44,7 +50,9 @@ public class MainTrackDriverLive {
         topicDriver=config.getProp().getProperty("TOPIC_DRIVER");
         topicDriverLocationChanged=config.getProp().getProperty("TOPIC_DRIVER_LOCATION_CHANGED");
         topicTrip=config.getProp().getProperty("TOPIC_TRIP");
-        DriverAndTripConsumer driverConsumer= new DriverAndTripConsumer(props, topicLogin,topicShift,topicDriver,topicDriverLocationChanged,topicTrip);
+        topicVehicleAssign=config.getProp().getProperty("TOPIC_DRIVER_VEHICLE");
+        topicDHstatus=config.getProp().getProperty("TOPIC_DH_STATUS");
+        DriverAndTripConsumer driverConsumer= new DriverAndTripConsumer(props, topicLogin,topicShift,topicDriver,topicDriverLocationChanged,topicTrip,topicVehicleAssign,topicDHstatus);
 
         driverConsumer.getdata();
 

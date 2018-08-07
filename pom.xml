@@ -98,6 +98,8 @@
             <scope>compile</scope>
         </dependency>
 
+
+
     </dependencies>
 
 
@@ -153,6 +155,10 @@
                                 <param>  com.pickme.events.trip.TripCancelRequest  </param>
                                 <param> com.pickme.events.trip.TripNotificationTimedOut  </param>
                                 <param> com.pickme.events.trip.DriverPoolNoDriverFound </param>
+
+                                <param> com.pickme.events.driver.DriverDhStatusChanged
+                                </param>
+                                <param>com.pickme.events.driver.DriverVehicleAssigned </param>
                             </subjectPatterns>
                         </configuration>
                     </execution>

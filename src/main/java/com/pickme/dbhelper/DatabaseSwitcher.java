@@ -1,17 +1,20 @@
+
 package com.pickme.dbhelper;
 
 import com.pickme.config.Config;
 
+import java.util.ArrayList;
+
 public class DatabaseSwitcher {
 
-   DriverLiveDatabase driverLiveDatabase;
-   int DATABASEMODE = 0;
-   Config config;
-   public DatabaseSwitcher(String database)
-   {
-       config = new Config();
-       selectDatabase(database);
-   }
+    DriverLiveDatabase driverLiveDatabase;
+    int DATABASEMODE = 0;
+    Config config;
+    public DatabaseSwitcher(String database)
+    {
+        config = new Config();
+        selectDatabase(database);
+    }
 
     public int getDATABASEMODE() {
         return DATABASEMODE;
@@ -29,15 +32,11 @@ public class DatabaseSwitcher {
     }
 
     public void insertDriverlocationchanged(int driver_id,long time){
-       driverLiveDatabase.insertDriverlocationchanged(driver_id,time);
+        driverLiveDatabase.insertDriverlocationchanged(driver_id,time);
     }
 
-    public Object selectDriver(){
-       com.datastax.driver.core.ResultSet object = null;
-       if(DATABASEMODE ==1){
-           object = (com.datastax.driver.core.ResultSet)driverLiveDatabase.selectDriver();
-       }
-       return object;
+    public ArrayList<String> selectDriver(int waitingTime){
+        return driverLiveDatabase.selectDriver(waitingTime);
     }
 
 
@@ -57,6 +56,10 @@ public class DatabaseSwitcher {
 
     public void insertTripEnd(int driver_id, long time){
         driverLiveDatabase.insertTripEnd(driver_id,time);
+    }
+
+    public void insertAssignStatus(int driver_id, String status){
+        driverLiveDatabase.insertVehicleAssignStatus(driver_id,status);
     }
 
 

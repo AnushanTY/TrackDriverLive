@@ -1,44 +1,63 @@
+
 package com.pickme.dbhelper;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class DriverLiveCassandra extends DriverLiveDatabase {
     private Cluster cluster;
     private Session session;
 
-    public DriverLiveCassandra(String node, int port){
-        connect(node,port);
+    public DriverLiveCassandra(String node, int port) {
+        connect(node, port);
     }
 
-    public void connect(String node, Integer port){    //connection cassandra server with a node and a port
+    public void connect(String node, Integer port) {    //connection cassandra server with a node and a port
         Cluster.Builder builder = Cluster.builder().addContactPoint(node);
-        if(port != null){
+        if (port != null) {
             builder.withPort(port);
         }
         cluster = builder.build();
         session = cluster.connect();
     }
 
-    public Session getSession(){
+    public Session getSession() {
         return this.session;
     }
 
-    public void close(){    //closing server
+    public void close() {    //closing server
         session.close();
         cluster.close();
     }
 
     @Override
-    public ResultSet selectDriver(){
-        String query = "SELECT driver_id,trip_end from TrackDriverLive.Driverlive WHERE driverstatus='A' AND loginstatus='A' AND shiftstatus='I' AND last_heartbeat<=20 AND trip_start=0 allow filtering";
-        return session.execute(query);
+    public ArrayList<String> selectDriver(int waitingTime) {
+        long currentTime = Calendar.getInstance().getTimeInMillis();
+        long validatingTime = currentTime - waitingTime * 60 * 1000;
+        ArrayList<String> driver_ids = new ArrayList<>();
+
+
+        StringBuilder sb = new StringBuilder("SELECT driver_id from TrackDriverLive.Driverlive WHERE driverstatus='A' AND loginstatus='A' AND shiftstatus='I' AND last_heartbeat<=20 AND trip_start=0 AND trip_end<=")
+                .append(validatingTime).append("allow filtering;");
+        String query = sb.toString();
+        ResultSet rs = session.execute(query);
+
+
+        for (Row row : rs) {
+            driver_ids.add("" + row.getInt("driver_id"));
+        }
+        return driver_ids;
+
     }
 
-   @Override
-    public void insertShiftStatus(int driver_id , String status){
+    @Override
+    public void insertShiftStatus(int driver_id, String status) {
         StringBuilder sb = new StringBuilder("INSERT INTO ")
                 .append("TrackDriverLive")
                 .append(".").append("Driverlive").append("(driver_id,shiftstatus ) ")
@@ -48,8 +67,9 @@ public class DriverLiveCassandra extends DriverLiveDatabase {
         String query = sb.toString();
         session.execute(query);
     }
+
     @Override
-    public void insertLoginStatus(int driver_id , String status){
+    public void insertLoginStatus(int driver_id, String status) {
         StringBuilder sb = new StringBuilder("INSERT INTO ")
                 .append("TrackDriverLive")
                 .append(".").append("Driverlive").append("(driver_id,loginstatus ) ")
@@ -59,8 +79,9 @@ public class DriverLiveCassandra extends DriverLiveDatabase {
         String query = sb.toString();
         session.execute(query);
     }
+
     @Override
-    public void insertDriverStatus(int driver_id , String status){
+    public void insertDriverStatus(int driver_id, String status) {
         StringBuilder sb = new StringBuilder("INSERT INTO ")
                 .append("TrackDriverLive")
                 .append(".").append("Driverlive").append("(driver_id,driverstatus ) ")
@@ -72,7 +93,7 @@ public class DriverLiveCassandra extends DriverLiveDatabase {
     }
 
     @Override
-    public  void insertDriverlocationchanged(int driver_id, long time){
+    public void insertDriverlocationchanged(int driver_id, long time) {
         StringBuilder sb = new StringBuilder("INSERT INTO ")
                 .append("TrackDriverLive")
                 .append(".").append("Driverlive").append("(driver_id,last_heartbeat ) ")
@@ -84,9 +105,8 @@ public class DriverLiveCassandra extends DriverLiveDatabase {
     }
 
 
-
     @Override
-    public void insertTripStart(int driver_id , long trip_start){
+    public void insertTripStart(int driver_id, long trip_start) {
         StringBuilder sb = new StringBuilder("INSERT INTO ")
                 .append("TrackDriverLive")
                 .append(".").append("Driverlive").append("(driver_id,trip_start,trip_end ) ")
@@ -99,7 +119,7 @@ public class DriverLiveCassandra extends DriverLiveDatabase {
     }
 
     @Override
-    public void insertTripEnd(int driver_id , long trip_end){
+    public void insertTripEnd(int driver_id, long trip_end) {
         StringBuilder sb = new StringBuilder("INSERT INTO ")
                 .append("TrackDriverLive")
                 .append(".").append("Driverlive").append("(driver_id,trip_start,trip_end ) ")
@@ -111,9 +131,10 @@ public class DriverLiveCassandra extends DriverLiveDatabase {
         session.execute(query);
     }
 
+    @Override
+    public void insertVehicleAssignStatus(int driver_id, String status) {
 
-
+    }
 
 
 }
-
