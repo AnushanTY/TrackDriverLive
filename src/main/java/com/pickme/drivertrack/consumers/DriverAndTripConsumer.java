@@ -40,7 +40,7 @@ public class DriverAndTripConsumer {
 
         public void getdata(){
             config=new Config();
-            databaseSwitcher= new DatabaseSwitcher("CASSASNDRA");
+            databaseSwitcher= new DatabaseSwitcher("CASSANDRA");
             final Consumer<String, GenericRecord> consumer = new KafkaConsumer<>(properties);
             consumer.subscribe(Arrays.asList(topicLogin,topicDriver,topicShift,topicDriverLocationChanged,topicTrip));
             try {

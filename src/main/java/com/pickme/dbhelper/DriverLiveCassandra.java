@@ -2,7 +2,11 @@ package com.pickme.dbhelper;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class DriverLiveCassandra extends DriverLiveDatabase {
@@ -32,9 +36,23 @@ public class DriverLiveCassandra extends DriverLiveDatabase {
     }
 
     @Override
-    public ResultSet selectDriver(){
-        String query = "SELECT driver_id,trip_end from TrackDriverLive.Driverlive WHERE driverstatus='A' AND loginstatus='A' AND shiftstatus='I' AND last_heartbeat<=20 AND trip_start=0 allow filtering";
-        return session.execute(query);
+    public ArrayList<String> selectDriver(int waitingTime){
+        long currentTime = Calendar.getInstance().getTimeInMillis();
+        long validatingTime = currentTime - waitingTime*60*1000;
+        ArrayList<String> driver_ids = new ArrayList<>();
+
+
+        StringBuilder sb = new StringBuilder("SELECT driver_id from TrackDriverLive.Driverlive WHERE driverstatus='A' AND loginstatus='A' AND shiftstatus='I' AND last_heartbeat<=20 AND trip_start=0 AND trip_end<=")
+        .append(validatingTime).append("allow filtering;");
+        String query = sb.toString();
+        ResultSet rs = session.execute(query);
+
+
+        for(Row row : rs){
+            driver_ids.add(""+row.getInt("driver_id"));
+        }
+        return driver_ids;
+
     }
 
    @Override
@@ -111,9 +129,14 @@ public class DriverLiveCassandra extends DriverLiveDatabase {
         session.execute(query);
     }
 
+    @Override
+    public void insertVehicleAssignStatus(int driver_id , String status){
 
+    }
 
+    @Override
+    public void insertDirectionalHire(int driver_id, int status) {
 
-
+    }
 }
 

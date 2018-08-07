@@ -153,6 +153,8 @@
                                 <param>  com.pickme.events.trip.TripCancelRequest  </param>
                                 <param> com.pickme.events.trip.TripNotificationTimedOut  </param>
                                 <param> com.pickme.events.trip.DriverPoolNoDriverFound </param>
+                                <param> com.pickme.events.driver.DriverVehicleAssigned</param>
+                                <param> com.pickme.events.driver.DriverDhStatusChanged</param>
                             </subjectPatterns>
                         </configuration>
                     </execution>
