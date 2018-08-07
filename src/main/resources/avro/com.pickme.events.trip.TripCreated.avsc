@@ -1,0 +1,291 @@
+{
+  "type" : "record",
+  "name" : "TripCreated",
+  "namespace" : "com.pickme.events.trip",
+  "fields" : [ {
+    "name" : "id",
+    "type" : "string"
+  }, {
+    "name" : "type",
+    "type" : "string"
+  }, {
+    "name" : "body",
+    "type" : {
+      "type" : "record",
+      "name" : "Body",
+      "namespace" : "com.pickme.events.trip.trip_created",
+      "fields" : [ {
+        "name" : "module",
+        "type" : "int"
+      }, {
+        "name" : "booked_by",
+        "type" : "int"
+      }, {
+        "name" : "trip_id",
+        "type" : "int"
+      }, {
+        "name" : "vehicle_type",
+        "type" : "int"
+      }, {
+        "name" : "pre_booking",
+        "type" : "boolean"
+      }, {
+        "name" : "passenger",
+        "type" : {
+          "type" : "record",
+          "name" : "Passenger",
+          "fields" : [ {
+            "name" : "id",
+            "type" : "int"
+          } ]
+        }
+      }, {
+        "name" : "driver",
+        "type" : {
+          "type" : "record",
+          "name" : "Driver",
+          "fields" : [ {
+            "name" : "id",
+            "type" : "int"
+          } ]
+        }
+      }, {
+        "name" : "corporate",
+        "type" : {
+          "type" : "record",
+          "name" : "Corporate",
+          "fields" : [ {
+            "name" : "id",
+            "type" : "int"
+          }, {
+            "name" : "dep_id",
+            "type" : "int"
+          } ]
+        }
+      }, {
+        "name" : "pickup",
+        "type" : {
+          "type" : "record",
+          "name" : "Pickup",
+          "fields" : [ {
+            "name" : "time",
+            "type" : "int"
+          }, {
+            "name" : "location",
+            "type" : {
+              "type" : "array",
+              "items" : {
+                "type" : "record",
+                "name" : "Location",
+                "fields" : [ {
+                  "name" : "address",
+                  "type" : "string"
+                }, {
+                  "name" : "lat",
+                  "type" : "float"
+                }, {
+                  "name" : "lng",
+                  "type" : "float"
+                } ]
+              }
+            }
+          } ]
+        }
+      }, {
+        "name" : "drop",
+        "type" : {
+          "type" : "record",
+          "name" : "Drop",
+          "fields" : [ {
+            "name" : "location",
+            "type" : {
+              "type" : "array",
+              "items" : "Location"
+            }
+          } ]
+        }
+      }, {
+        "name" : "promotion",
+        "type" : {
+          "type" : "record",
+          "name" : "Promotion",
+          "fields" : [ {
+            "name" : "code",
+            "type" : "string"
+          } ]
+        }
+      }, {
+        "name" : "region",
+        "type" : {
+          "type" : "record",
+          "name" : "Region",
+          "fields" : [ {
+            "name" : "ids",
+            "type" : {
+              "type" : "array",
+              "items" : "int"
+            },
+            "default" : [ ]
+          } ]
+        }
+      }, {
+        "name" : "payment",
+        "type" : {
+          "type" : "record",
+          "name" : "Payment",
+          "fields" : [ {
+            "name" : "primary_method",
+            "type" : "int"
+          }, {
+            "name" : "secondary_method",
+            "type" : "int"
+          } ]
+        }
+      }, {
+        "name" : "comments",
+        "type" : {
+          "type" : "record",
+          "name" : "Comments",
+          "fields" : [ {
+            "name" : "remark",
+            "type" : "string"
+          }, {
+            "name" : "driver_notes",
+            "type" : "string"
+          } ]
+        }
+      }, {
+        "name" : "filters",
+        "type" : {
+          "type" : "record",
+          "name" : "Filters",
+          "fields" : [ {
+            "name" : "driver",
+            "type" : {
+              "type" : "record",
+              "name" : "DriverFilter",
+              "fields" : [ {
+                "name" : "language_id",
+                "type" : "int"
+              } ]
+            }
+          }, {
+            "name" : "vehicle",
+            "type" : {
+              "type" : "record",
+              "name" : "Vehicle",
+              "fields" : [ {
+                "name" : "company_id",
+                "type" : "int"
+              }, {
+                "name" : "brand_id",
+                "type" : "int"
+              }, {
+                "name" : "color_id",
+                "type" : "int"
+              } ]
+            }
+          } ]
+        }
+      }, {
+        "name" : "surge",
+        "type" : {
+          "type" : "record",
+          "name" : "Surge",
+          "fields" : [ {
+            "name" : "region_id",
+            "type" : "int"
+          }, {
+            "name" : "value",
+            "type" : "float"
+          } ]
+        }
+      }, {
+        "name" : "fare_details",
+        "type" : {
+          "type" : "record",
+          "name" : "FareDetails",
+          "fields" : [ {
+            "name" : "fare_type",
+            "type" : "string"
+          }, {
+            "name" : "min_km",
+            "type" : "float"
+          }, {
+            "name" : "min_fare",
+            "type" : "float"
+          }, {
+            "name" : "additional_km_fare",
+            "type" : "float"
+          }, {
+            "name" : "waiting_time_fare",
+            "type" : "float"
+          }, {
+            "name" : "free_waiting_time",
+            "type" : "int"
+          }, {
+            "name" : "night_fare",
+            "type" : "float"
+          }, {
+            "name" : "ride_hours",
+            "type" : "float"
+          }, {
+            "name" : "extra_ride_fare",
+            "type" : "float"
+          }, {
+            "name" : "driver_bata",
+            "type" : "float"
+          }, {
+            "name" : "trip_type",
+            "type" : "int"
+          } ]
+        }
+      } ]
+    }
+  }, {
+    "name" : "created_at",
+    "type" : "long"
+  }, {
+    "name" : "expiry",
+    "type" : "long",
+    "default" : 0
+  }, {
+    "name" : "version",
+    "type" : "int",
+    "default" : 0
+  }, {
+    "name" : "trace_info",
+    "type" : {
+      "type" : "record",
+      "name" : "TraceInfo",
+      "fields" : [ {
+        "name" : "trace_id",
+        "type" : {
+          "type" : "record",
+          "name" : "TraceId",
+          "fields" : [ {
+            "name" : "high",
+            "type" : "long",
+            "default" : 0
+          }, {
+            "name" : "low",
+            "type" : "long",
+            "default" : 0
+          } ]
+        }
+      }, {
+        "name" : "span_id",
+        "type" : "long",
+        "default" : 0
+      }, {
+        "name" : "parent_id",
+        "type" : "long",
+        "default" : 0
+      }, {
+        "name" : "sampled",
+        "type" : "boolean",
+        "default" : false
+      } ]
+    }
+  } ]
+}

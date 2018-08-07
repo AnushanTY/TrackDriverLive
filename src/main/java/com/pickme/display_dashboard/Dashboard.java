@@ -3,7 +3,6 @@ package com.pickme.display_dashboard;
 import com.datastax.driver.core.ResultSet;
 import com.pickme.config.Config;
 import com.pickme.dbhelper.DatabaseSwitcher;
-import com.pickme.process.Calculation;
 
 
 import javax.swing.*;
@@ -20,8 +19,7 @@ public class Dashboard {
     private int waiting_time;   //time in minutes
     private DatabaseSwitcher databaseSwitcher;
     private ResultSet rs;
-    private JFrame jFrame;
-    private Calculation calculation;
+    private JFrame jFrame;;
     private Config config;
 
 
@@ -34,16 +32,16 @@ public class Dashboard {
         apply_show.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    waiting_time = Integer.parseInt(time_text.getText());
+                waiting_time = Integer.parseInt(time_text.getText());
 
-                    if(time_text.getText() != null  && time_text.getText().matches("[0-9]+") ) {
+                if(time_text.getText() != null  && time_text.getText().matches("[0-9]+") ) {
 
-                        showing_output(waiting_time);
+                    showing_output(waiting_time);
 
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null,  "Sorry, invalid values", "InfoBox: " + "Invalid", JOptionPane.INFORMATION_MESSAGE);
-                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,  "Sorry, invalid values", "InfoBox: " + "Invalid", JOptionPane.INFORMATION_MESSAGE);
+                }
 
             }
         });
@@ -63,8 +61,7 @@ public class Dashboard {
     private void showing_output(int waiting_time){
 
         dashboard.setText("List of the drivers waiting more than "+waiting_time+" minutes");
-        calculation = new Calculation();
-        ArrayList<String> resultList=calculation.processDriverID(waiting_time,databaseSwitcher);
+        ArrayList<String> resultList=databaseSwitcher.selectDriver(waiting_time);
         for (String s:resultList){
 
             dashboard.setText(dashboard.getText() + "/n" + s);

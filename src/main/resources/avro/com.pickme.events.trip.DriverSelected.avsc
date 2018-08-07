@@ -1,0 +1,90 @@
+{
+  "type" : "record",
+  "name" : "DriverSelected",
+  "namespace" : "com.pickme.events.trip",
+  "fields" : [ {
+    "name" : "id",
+    "type" : "string"
+  }, {
+    "name" : "type",
+    "type" : "string"
+  }, {
+    "name" : "body",
+    "type" : {
+      "type" : "record",
+      "name" : "Body",
+      "namespace" : "com.pickme.events.trip.driver_selected",
+      "fields" : [ {
+        "name" : "trip_id",
+        "type" : "int"
+      }, {
+        "name" : "drivers",
+        "type" : {
+          "type" : "array",
+          "items" : {
+            "type" : "record",
+            "name" : "Drivers",
+            "fields" : [ {
+              "name" : "driver_id",
+              "type" : "int"
+            }, {
+              "name" : "eta",
+              "type" : "float"
+            }, {
+              "name" : "vehicle_type",
+              "type" : "int"
+            }, {
+              "name" : "selection_type",
+              "type" : "int"
+            } ]
+          }
+        }
+      } ]
+    }
+  }, {
+    "name" : "created_at",
+    "type" : "long"
+  }, {
+    "name" : "expiry",
+    "type" : "long",
+    "default" : 0
+  }, {
+    "name" : "version",
+    "type" : "int",
+    "default" : 0
+  }, {
+    "name" : "trace_info",
+    "type" : {
+      "type" : "record",
+      "name" : "TraceInfo",
+      "fields" : [ {
+        "name" : "trace_id",
+        "type" : {
+          "type" : "record",
+          "name" : "TraceId",
+          "fields" : [ {
+            "name" : "high",
+            "type" : "long",
+            "default" : 0
+          }, {
+            "name" : "low",
+            "type" : "long",
+            "default" : 0
+          } ]
+        }
+      }, {
+        "name" : "span_id",
+        "type" : "long",
+        "default" : 0
+      }, {
+        "name" : "parent_id",
+        "type" : "long",
+        "default" : 0
+      }, {
+        "name" : "sampled",
+        "type" : "boolean",
+        "default" : false
+      } ]
+    }
+  } ]
+}
