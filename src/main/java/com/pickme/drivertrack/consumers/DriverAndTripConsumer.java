@@ -125,7 +125,27 @@ public class DriverAndTripConsumer {
                             databaseSwitcher.insertTripEnd((int) jsonObject.get("driver_id"), timestap);
                         }
 
-                        
+                        if(record.value().get("type").toString().equals("driver_vehicle_assigned")){
+
+
+                            JSONObject jsonObject = new JSONObject(record.value().get("body").toString());
+
+
+
+
+                            databaseSwitcher.insertVehicleAssignStatus((int) jsonObject.get("driver_id"), ( String)jsonObject.get("status"));
+                        }
+
+                        if(record.value().get("type").toString().equals("driver_dh_status_changed")){
+
+
+                            JSONObject jsonObject = new JSONObject(record.value().get("body").toString());
+
+
+
+
+                            databaseSwitcher.insertDirectionalHire((int) jsonObject.get("driver_id"), ( int)jsonObject.get("status"));
+                        }
 
 
 

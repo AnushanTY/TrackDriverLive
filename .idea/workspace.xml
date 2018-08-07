@@ -7,50 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e2d7328-1239-4654-891d-120d047085e5" name="Default" comment="Dashboard added">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Driver_Tracker.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pickme/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pickme/config/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DatabaseSwitcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DatabaseSwitcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DriverLiveCassandra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DriverLiveCassandra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DriverLiveDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DriverLiveDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pickme/display_dashboard/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pickme/display_dashboard/Dashboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pickme/drivertrack/consumers/DriverAndTripConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pickme/drivertrack/consumers/DriverAndTripConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pickme/process/Calculation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prop.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/prop.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/drivertrack/consumers/DriverAndTripConsumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pickme/drivertrack/consumers/DriverAndTripConsumer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/DriverLocationChanged$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/DriverLocationChanged$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/DriverLocationChanged.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/DriverLoginStatusChanged$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/DriverLoginStatusChanged$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/DriverLoginStatusChanged.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/DriverShiftStatusChanged$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/DriverShiftStatusChanged$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/DriverShiftStatusChanged.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/DriverStatusChanged$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/DriverStatusChanged$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/DriverStatusChanged.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/TraceId$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/TraceId$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/TraceId.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/TraceInfo$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/TraceInfo$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/TraceInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/driver_location_changed/Body$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/driver_location_changed/Body$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/driver_location_changed/Body.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/driver_location_changed/Location$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/driver_location_changed/Location$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/driver_location_changed/Location.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/driver_login_status_changed/Body$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/driver_login_status_changed/Body$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/driver_login_status_changed/Body.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/driver_shift_status_changed/Body$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/driver_shift_status_changed/Body$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/driver_shift_status_changed/Body.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/driver_status_changed/Body$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/driver_status_changed/Body$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pickme/events/driver/driver_status_changed/Body.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -63,11 +24,97 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="307">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logback.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/logback.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="prop.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/prop.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MainTrackDriverLive.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/MainTrackDriverLive.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="825">
-              <caret line="68" column="1" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
+            <state relative-caret-position="810">
+              <caret line="54" column="182" selection-start-line="54" selection-start-column="182" selection-end-line="54" selection-end-column="182" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseSwitcher.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DatabaseSwitcher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="369">
+              <caret line="61" column="33" lean-forward="true" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#371#372#0" expanded="true" />
+                <element signature="e#406#407#0" expanded="true" />
+                <element signature="e#1048#1049#0" expanded="true" />
+                <element signature="e#1115#1116#0" expanded="true" />
+                <element signature="e#1449#1450#0" expanded="true" />
+                <element signature="e#1515#1516#0" expanded="true" />
+                <element signature="e#1574#1575#0" expanded="true" />
+                <element signature="e#1638#1639#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DriverLiveDatabase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DriverLiveDatabase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DriverLiveCassandra.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DriverLiveCassandra.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="44" column="229" selection-start-line="44" selection-start-column="229" selection-end-line="44" selection-end-column="229" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DriverAndTripConsumer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/drivertrack/consumers/DriverAndTripConsumer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="433">
+              <caret line="135" column="54" selection-start-line="135" selection-start-column="54" selection-end-line="135" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Config.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/config/Config.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,81 +125,12 @@
       <file leaf-file-name="Dashboard.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/display_dashboard/Dashboard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+            <state relative-caret-position="960">
+              <caret line="73" column="1" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#809#1378#0" expanded="true" />
-                <element signature="e#1377#1378#0" expanded="true" />
+                <element signature="e#773#1314#0" expanded="true" />
+                <element signature="e#1313#1314#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="147" column="25" selection-start-line="147" selection-start-column="25" selection-end-line="147" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DriverAndTripConsumer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/drivertrack/consumers/DriverAndTripConsumer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-78">
-              <caret line="47" column="64" selection-start-line="47" selection-start-column="64" selection-end-line="47" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DriverLiveCassandra.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DriverLiveCassandra.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="793">
-              <caret line="131" selection-start-line="131" selection-end-line="131" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseSwitcher.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DatabaseSwitcher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="837">
-              <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DriverLiveDatabase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DriverLiveDatabase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="74" selection-start-line="13" selection-start-column="74" selection-end-line="13" selection-end-column="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Dashboard.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/display_dashboard/Dashboard.form">
-          <provider selected="true" editor-type-id="ui-designer" />
-        </entry>
-      </file>
-      <file leaf-file-name="Config.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/config/Config.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="prop.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/prop.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="40" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -198,14 +176,14 @@
         <option value="$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DriverLive_Cassandra.java" />
         <option value="$PROJECT_DIR$/src/main/java/MainTrackDriverLive.java" />
         <option value="$PROJECT_DIR$/src/prop.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pickme/drivertrack/consumers/DriverAndTripConsumer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pickme/process/Calculation.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pickme/display_dashboard/Dashboard.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DatabaseSwitcher.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DriverLiveDatabase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DriverLiveCassandra.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pickme/config/Config.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DatabaseSwitcher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pickme/drivertrack/consumers/DriverAndTripConsumer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DriverLiveCassandra.java" />
       </list>
     </option>
   </component>
@@ -216,23 +194,34 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="TrackDriverLive" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="TrackDriverLive" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="518" />
     <option name="y" value="92" />
     <option name="width" value="1266" />
     <option name="height" value="789" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -264,7 +253,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="pickme" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TrackDriverLive" type="b2602c69:ProjectViewProjectNode" />
@@ -272,6 +261,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="pickme" type="462c0819:PsiDirectoryNode" />
               <item name="dbhelper" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -280,33 +270,16 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="display_dashboard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrackDriverLive" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrackDriverLive" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="pickme" type="462c0819:PsiDirectoryNode" />
               <item name="consumers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrackDriverLive" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrackDriverLive" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="local" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrackDriverLive" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrackDriverLive" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -486,27 +459,30 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.329718" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50026983" side_tool="true" weight="0.36613756" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32910052" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49973017" weight="0.36613756" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3286334" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5002767" side_tool="true" weight="0.3286334" />
+      <window_info anchor="right" id="Maven Projects" order="3" weight="0.32982844" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.329718" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997233" visible="true" weight="0.45227766" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4997233" weight="0.3286334" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17487548" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49919224" visible="true" weight="0.26618704" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
       <window_info id="Learn" order="2" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Structure" order="1" sideWeight="0.50080776" side_tool="true" weight="0.26618704" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info id="Designer" order="2" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -523,14 +499,14 @@
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32910052" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Learn" order="2" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50026983" side_tool="true" weight="0.36613756" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32910052" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49973017" weight="0.32910052" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17487548" />
@@ -566,13 +542,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/drivertrack/consumers/DriverConsumer.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/events/driver/DriverLocationChanged.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/events/driver/DriverLoginStatusChanged.java" />
-    <entry file="jar://$USER_HOME$/Downloads/jdk-8u172-linux-x64/jdk1.8.0_172/src.zip!/java/util/Properties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1815">
-          <caret line="121" column="6" selection-start-line="121" selection-start-column="6" selection-end-line="121" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/../jdk-8u172-linux-x64/jdk1.8.0_172/src.zip!/java/util/Properties.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/display/Display.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/MainTrackDriverLive.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -652,89 +622,96 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/local/logger.txt" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/events/driver/DriverLocationChanged.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/events/driver/DriverLoginStatusChanged.java" />
-    <entry file="jar://$USER_HOME$/Downloads/jdk-8u172-linux-x64/jdk1.8.0_172/src.zip!/java/util/Properties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="121" column="6" selection-start-line="121" selection-start-column="6" selection-end-line="121" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/../jdk-8u172-linux-x64/jdk1.8.0_172/src.zip!/java/util/Properties.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/display/Display.form" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/display/Display.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/events/driver/driver_location_changed/Body.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/events/driver/driver_status_changed/Body.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/MainTrackDriverLive.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="68" column="1" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/prop.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="40" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/display_dashboard/Dashboard.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/process/Calculation.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="147" column="25" selection-start-line="147" selection-start-column="25" selection-end-line="147" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DriverLiveDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="74" selection-start-line="13" selection-start-column="74" selection-end-line="13" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DatabaseSwitcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="837">
-          <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DriverLiveCassandra.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="793">
-          <caret line="131" selection-start-line="131" selection-end-line="131" />
+        <state relative-caret-position="307">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/config/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+        <state relative-caret-position="135">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/display_dashboard/Dashboard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+        <state relative-caret-position="960">
+          <caret line="73" column="1" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
+          <folding>
+            <element signature="e#773#1314#0" expanded="true" />
+            <element signature="e#1313#1314#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/prop.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MainTrackDriverLive.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="54" column="182" selection-start-line="54" selection-start-column="182" selection-end-line="54" selection-end-column="182" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#809#1378#0" expanded="true" />
-            <element signature="e#1377#1378#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DatabaseSwitcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="61" column="33" lean-forward="true" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#371#372#0" expanded="true" />
+            <element signature="e#406#407#0" expanded="true" />
+            <element signature="e#1048#1049#0" expanded="true" />
+            <element signature="e#1115#1116#0" expanded="true" />
+            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1515#1516#0" expanded="true" />
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1638#1639#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DriverLiveDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/drivertrack/consumers/DriverAndTripConsumer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-78">
-          <caret line="47" column="64" selection-start-line="47" selection-start-column="64" selection-end-line="47" selection-end-column="64" />
+        <state relative-caret-position="433">
+          <caret line="135" column="54" selection-start-line="135" selection-start-column="54" selection-end-line="135" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pickme/dbhelper/DriverLiveCassandra.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="44" column="229" selection-start-line="44" selection-start-column="229" selection-end-line="44" selection-end-column="229" />
         </state>
       </provider>
     </entry>
