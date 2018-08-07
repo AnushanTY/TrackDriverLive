@@ -64,7 +64,7 @@ public class Dashboard {
         ArrayList<String> resultList=databaseSwitcher.selectDriver(waiting_time);
         for (String s:resultList){
 
-            dashboard.setText(dashboard.getText() + "/n" + s);
+            dashboard.setText(dashboard.getText() + "\n" + s);
         }
 
     }

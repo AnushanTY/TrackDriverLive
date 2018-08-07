@@ -42,7 +42,7 @@ public class DriverLiveCassandra extends DriverLiveDatabase {
         ArrayList<String> driver_ids = new ArrayList<>();
 
 
-        StringBuilder sb = new StringBuilder("SELECT driver_id from TrackDriverLive.Driverlive WHERE driverstatus='A' AND loginstatus='A' AND shiftstatus='I' AND last_heartbeat<=20 AND trip_start=0 AND trip_end<=")
+        StringBuilder sb = new StringBuilder("SELECT driver_id from TrackDriverLive.Driverlive WHERE driverstatus='A' AND loginstatus='A' AND shiftstatus='I' AND last_heartbeat<=20 AND trip_start=0 AND vehicleassignstatus='A' AND directionalhire =0 AND trip_end<=")
         .append(validatingTime).append("allow filtering;");
         String query = sb.toString();
         ResultSet rs = session.execute(query);
@@ -131,12 +131,26 @@ public class DriverLiveCassandra extends DriverLiveDatabase {
 
     @Override
     public void insertVehicleAssignStatus(int driver_id , String status){
+        StringBuilder sb = new StringBuilder("INSERT INTO ")
+                .append("TrackDriverLive")
+                .append(".").append("Driverlive").append("(driver_id, vehicleassignstatus) ")
+                .append("VALUES (").append(driver_id)
+                .append(", '").append(status).append("');");
 
+        String query = sb.toString();
+        session.execute(query);
     }
 
     @Override
     public void insertDirectionalHire(int driver_id, int status) {
+        StringBuilder sb = new StringBuilder("INSERT INTO ")
+                .append("TrackDriverLive")
+                .append(".").append("Driverlive").append("(driver_id, directionalhire) ")
+                .append("VALUES (").append(driver_id)
+                .append(", ").append(status).append(");");
 
+        String query = sb.toString();
+        session.execute(query);
     }
 }
 

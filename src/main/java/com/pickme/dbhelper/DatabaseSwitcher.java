@@ -58,7 +58,7 @@ public class DatabaseSwitcher {
         driverLiveDatabase.insertTripEnd(driver_id,time);
     }
 
-    public void insertAssignStatus(int driver_id, String status){
+    public void insertVehicleAssignStatus(int driver_id, String status){
         driverLiveDatabase.insertVehicleAssignStatus(driver_id,status);
     }
 
