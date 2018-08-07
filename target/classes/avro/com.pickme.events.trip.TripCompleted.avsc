@@ -1,0 +1,167 @@
+{
+  "type" : "record",
+  "name" : "TripCompleted",
+  "namespace" : "com.pickme.events.trip",
+  "fields" : [ {
+    "name" : "id",
+    "type" : "string"
+  }, {
+    "name" : "type",
+    "type" : "string"
+  }, {
+    "name" : "body",
+    "type" : {
+      "type" : "record",
+      "name" : "Body",
+      "namespace" : "com.pickme.events.trip.trip_completed",
+      "fields" : [ {
+        "name" : "passenger_id",
+        "type" : "int"
+      }, {
+        "name" : "driver_id",
+        "type" : "int"
+      }, {
+        "name" : "trip",
+        "type" : {
+          "type" : "record",
+          "name" : "Trip",
+          "fields" : [ {
+            "name" : "id",
+            "type" : "int"
+          }, {
+            "name" : "booked_by",
+            "type" : "int"
+          }, {
+            "name" : "distance",
+            "type" : "int"
+          }, {
+            "name" : "trip_cost",
+            "type" : "float"
+          }, {
+            "name" : "flags",
+            "type" : {
+              "type" : "record",
+              "name" : "Flags",
+              "fields" : [ {
+                "name" : "itc",
+                "type" : "boolean"
+              } ]
+            }
+          }, {
+            "name" : "payment",
+            "type" : {
+              "type" : "array",
+              "items" : {
+                "type" : "record",
+                "name" : "Payment",
+                "fields" : [ {
+                  "name" : "method",
+                  "type" : "int"
+                }, {
+                  "name" : "amount",
+                  "type" : "float"
+                } ]
+              }
+            }
+          }, {
+            "name" : "discount",
+            "type" : "float"
+          }, {
+            "name" : "promo_code",
+            "type" : "string"
+          }, {
+            "name" : "corporate",
+            "type" : {
+              "type" : "record",
+              "name" : "Corporate",
+              "fields" : [ {
+                "name" : "company_id",
+                "type" : "int"
+              }, {
+                "name" : "department_id",
+                "type" : "int"
+              } ]
+            }
+          }, {
+            "name" : "actual_pickup",
+            "type" : {
+              "type" : "record",
+              "name" : "ActualPickup",
+              "fields" : [ {
+                "name" : "address",
+                "type" : "string"
+              }, {
+                "name" : "lat",
+                "type" : "float"
+              }, {
+                "name" : "lng",
+                "type" : "float"
+              } ]
+            }
+          }, {
+            "name" : "actual_drop",
+            "type" : {
+              "type" : "record",
+              "name" : "ActualDrop",
+              "fields" : [ {
+                "name" : "address",
+                "type" : "string"
+              }, {
+                "name" : "lat",
+                "type" : "float"
+              }, {
+                "name" : "lng",
+                "type" : "float"
+              } ]
+            }
+          } ]
+        }
+      } ]
+    }
+  }, {
+    "name" : "created_at",
+    "type" : "long"
+  }, {
+    "name" : "expiry",
+    "type" : "long",
+    "default" : 0
+  }, {
+    "name" : "version",
+    "type" : "int",
+    "default" : 0
+  }, {
+    "name" : "trace_info",
+    "type" : {
+      "type" : "record",
+      "name" : "TraceInfo",
+      "fields" : [ {
+        "name" : "trace_id",
+        "type" : {
+          "type" : "record",
+          "name" : "TraceId",
+          "fields" : [ {
+            "name" : "high",
+            "type" : "long",
+            "default" : 0
+          }, {
+            "name" : "low",
+            "type" : "long",
+            "default" : 0
+          } ]
+        }
+      }, {
+        "name" : "span_id",
+        "type" : "long",
+        "default" : 0
+      }, {
+        "name" : "parent_id",
+        "type" : "long",
+        "default" : 0
+      }, {
+        "name" : "sampled",
+        "type" : "boolean",
+        "default" : false
+      } ]
+    }
+  } ]
+}

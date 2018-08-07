@@ -62,6 +62,10 @@ public class DatabaseSwitcher {
         driverLiveDatabase.insertVehicleAssignStatus(driver_id,status);
     }
 
+    public void insertDirectionalHire(int driver_id , int status){
+        driverLiveDatabase.insertDirectionalHire(driver_id,status);
+    }
+
 
 
 
