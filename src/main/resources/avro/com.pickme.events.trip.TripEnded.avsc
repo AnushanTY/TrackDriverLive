@@ -1,0 +1,187 @@
+{
+  "type" : "record",
+  "name" : "TripEnded",
+  "namespace" : "com.pickme.events.trip",
+  "fields" : [ {
+    "name" : "id",
+    "type" : "string"
+  }, {
+    "name" : "type",
+    "type" : "string"
+  }, {
+    "name" : "body",
+    "type" : {
+      "type" : "record",
+      "name" : "Body",
+      "namespace" : "com.pickme.events.trip.trip_ended",
+      "fields" : [ {
+        "name" : "trip_id",
+        "type" : "int"
+      }, {
+        "name" : "driver_id",
+        "type" : "int"
+      }, {
+        "name" : "location",
+        "type" : {
+          "type" : "record",
+          "name" : "Location",
+          "fields" : [ {
+            "name" : "address",
+            "type" : "string"
+          }, {
+            "name" : "lat",
+            "type" : "float"
+          }, {
+            "name" : "lng",
+            "type" : "float"
+          } ]
+        }
+      }, {
+        "name" : "meter_details",
+        "type" : {
+          "type" : "record",
+          "name" : "MeterDetails",
+          "fields" : [ {
+            "name" : "travel_details",
+            "type" : {
+              "type" : "record",
+              "name" : "TravelDetails",
+              "fields" : [ {
+                "name" : "distance_travelled",
+                "type" : "int"
+              }, {
+                "name" : "waiting_time",
+                "type" : "int"
+              } ]
+            }
+          }, {
+            "name" : "fare_details",
+            "type" : {
+              "type" : "record",
+              "name" : "FareDetails",
+              "fields" : [ {
+                "name" : "distance_fare",
+                "type" : "float"
+              }, {
+                "name" : "waiting_fare",
+                "type" : "float"
+              }, {
+                "name" : "night_fare",
+                "type" : "float"
+              }, {
+                "name" : "day_night_switching_cost",
+                "type" : "float"
+              }, {
+                "name" : "meter_total_fare",
+                "type" : "float"
+              } ]
+            }
+          } ]
+        }
+      }, {
+        "name" : "final_trip_fare",
+        "type" : {
+          "type" : "record",
+          "name" : "FinalTripFare",
+          "fields" : [ {
+            "name" : "promotion",
+            "type" : {
+              "type" : "record",
+              "name" : "Promotion",
+              "fields" : [ {
+                "name" : "type",
+                "type" : "string"
+              }, {
+                "name" : "code",
+                "type" : "string"
+              }, {
+                "name" : "discount_amount",
+                "type" : "float"
+              } ]
+            }
+          }, {
+            "name" : "auto_payment",
+            "type" : {
+              "type" : "array",
+              "items" : {
+                "type" : "record",
+                "name" : "AutoPayment",
+                "fields" : [ {
+                  "name" : "type",
+                  "type" : "int"
+                }, {
+                  "name" : "amount",
+                  "type" : "float"
+                } ]
+              }
+            }
+          }, {
+            "name" : "additional_fare",
+            "type" : {
+              "type" : "array",
+              "items" : {
+                "type" : "record",
+                "name" : "AdditionalFare",
+                "fields" : [ {
+                  "name" : "code",
+                  "type" : "string"
+                }, {
+                  "name" : "amount",
+                  "type" : "float"
+                } ]
+              }
+            }
+          }, {
+            "name" : "final_trip_fare",
+            "type" : "float"
+          } ]
+        }
+      } ]
+    }
+  }, {
+    "name" : "created_at",
+    "type" : "long"
+  }, {
+    "name" : "expiry",
+    "type" : "long",
+    "default" : 0
+  }, {
+    "name" : "version",
+    "type" : "int",
+    "default" : 0
+  }, {
+    "name" : "trace_info",
+    "type" : {
+      "type" : "record",
+      "name" : "TraceInfo",
+      "fields" : [ {
+        "name" : "trace_id",
+        "type" : {
+          "type" : "record",
+          "name" : "TraceId",
+          "fields" : [ {
+            "name" : "high",
+            "type" : "long",
+            "default" : 0
+          }, {
+            "name" : "low",
+            "type" : "long",
+            "default" : 0
+          } ]
+        }
+      }, {
+        "name" : "span_id",
+        "type" : "long",
+        "default" : 0
+      }, {
+        "name" : "parent_id",
+        "type" : "long",
+        "default" : 0
+      }, {
+        "name" : "sampled",
+        "type" : "boolean",
+        "default" : false
+      } ]
+    }
+  } ]
+}

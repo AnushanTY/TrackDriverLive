@@ -1,0 +1,71 @@
+{
+  "type" : "record",
+  "name" : "NoDriverFound",
+  "namespace" : "com.pickme.events.trip",
+  "fields" : [ {
+    "name" : "id",
+    "type" : "string"
+  }, {
+    "name" : "type",
+    "type" : "string"
+  }, {
+    "name" : "body",
+    "type" : {
+      "type" : "record",
+      "name" : "Body",
+      "namespace" : "com.pickme.events.trip.no_driver_found",
+      "fields" : [ {
+        "name" : "trip_id",
+        "type" : "int"
+      }, {
+        "name" : "rejection_count",
+        "type" : "int"
+      } ]
+    }
+  }, {
+    "name" : "created_at",
+    "type" : "long"
+  }, {
+    "name" : "expiry",
+    "type" : "long",
+    "default" : 0
+  }, {
+    "name" : "version",
+    "type" : "int",
+    "default" : 0
+  }, {
+    "name" : "trace_info",
+    "type" : {
+      "type" : "record",
+      "name" : "TraceInfo",
+      "fields" : [ {
+        "name" : "trace_id",
+        "type" : {
+          "type" : "record",
+          "name" : "TraceId",
+          "fields" : [ {
+            "name" : "high",
+            "type" : "long",
+            "default" : 0
+          }, {
+            "name" : "low",
+            "type" : "long",
+            "default" : 0
+          } ]
+        }
+      }, {
+        "name" : "span_id",
+        "type" : "long",
+        "default" : 0
+      }, {
+        "name" : "parent_id",
+        "type" : "long",
+        "default" : 0
+      }, {
+        "name" : "sampled",
+        "type" : "boolean",
+        "default" : false
+      } ]
+    }
+  } ]
+}

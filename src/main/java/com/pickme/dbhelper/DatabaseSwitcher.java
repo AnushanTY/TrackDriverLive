@@ -1,3 +1,4 @@
+
 package com.pickme.dbhelper;
 
 import com.pickme.config.Config;
@@ -6,14 +7,14 @@ import java.util.ArrayList;
 
 public class DatabaseSwitcher {
 
-   DriverLiveDatabase driverLiveDatabase;
-   int DATABASEMODE = 0;
-   Config config;
-   public DatabaseSwitcher(String database)
-   {
-       config = new Config();
-       selectDatabase(database);
-   }
+    DriverLiveDatabase driverLiveDatabase;
+    int DATABASEMODE = 0;
+    Config config;
+    public DatabaseSwitcher(String database)
+    {
+        config = new Config();
+        selectDatabase(database);
+    }
 
     public int getDATABASEMODE() {
         return DATABASEMODE;
@@ -31,11 +32,11 @@ public class DatabaseSwitcher {
     }
 
     public void insertDriverlocationchanged(int driver_id,long time){
-       driverLiveDatabase.insertDriverlocationchanged(driver_id,time);
+        driverLiveDatabase.insertDriverlocationchanged(driver_id,time);
     }
 
     public ArrayList<String> selectDriver(int waitingTime){
-           return driverLiveDatabase.selectDriver(waitingTime);
+        return driverLiveDatabase.selectDriver(waitingTime);
     }
 
 
@@ -57,12 +58,12 @@ public class DatabaseSwitcher {
         driverLiveDatabase.insertTripEnd(driver_id,time);
     }
 
-    public void insertVehicleAssignStatus(int driver_id, String status){
-       driverLiveDatabase.insertVehicleAssignStatus(driver_id,status);
+    public void insertAssignStatus(int driver_id, String status){
+        driverLiveDatabase.insertVehicleAssignStatus(driver_id,status);
     }
 
-    public void insertDirectionalHire (int driver_id , int status){
-       driverLiveDatabase.insertDirectionalHire(driver_id,status);
+    public void insertDirectionalHire(int driver_id , int status){
+        driverLiveDatabase.insertDirectionalHire(driver_id,status);
     }
 
 

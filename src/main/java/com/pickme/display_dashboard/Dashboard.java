@@ -32,16 +32,16 @@ public class Dashboard {
         apply_show.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    waiting_time = Integer.parseInt(time_text.getText());
+                waiting_time = Integer.parseInt(time_text.getText());
 
-                    if(time_text.getText() != null  && time_text.getText().matches("[0-9]+") ) {
+                if(time_text.getText() != null  && time_text.getText().matches("[0-9]+") ) {
 
-                        showing_output(waiting_time);
+                    showing_output(waiting_time);
 
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null,  "Sorry, invalid values", "InfoBox: " + "Invalid", JOptionPane.INFORMATION_MESSAGE);
-                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,  "Sorry, invalid values", "InfoBox: " + "Invalid", JOptionPane.INFORMATION_MESSAGE);
+                }
 
             }
         });

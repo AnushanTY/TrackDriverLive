@@ -9,6 +9,7 @@ import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.protocol.types.Field;
 import org.json.JSONObject;
 
 import java.util.Arrays;
@@ -25,9 +26,11 @@ public class DriverAndTripConsumer {
         private String topicDriver;
         private String topicDriverLocationChanged;
         private String topicTrip;
+        private String topicVehicleAssign;
+        private  String topicDHstatus;
         private String[] status_array;
 
-        public DriverAndTripConsumer(Properties properties, String topicLogin, String topicShift, String topicDriver, String topicDriverLocationChanged, String topicTrip) {
+        public DriverAndTripConsumer(Properties properties, String topicLogin, String topicShift, String topicDriver, String topicDriverLocationChanged, String topicTrip, String topicVehicleAssign, String topicDHstatus) {
             status_array = new String[2];
             this.properties = properties;
             this.topicDriver=topicDriver;
@@ -35,6 +38,8 @@ public class DriverAndTripConsumer {
             this.topicLogin=topicLogin;
             this.topicShift=topicShift;
             this.topicTrip=topicTrip;
+            this.topicDHstatus=topicDHstatus;
+            this.topicVehicleAssign=topicVehicleAssign;
 
         }
 
@@ -42,7 +47,7 @@ public class DriverAndTripConsumer {
             config=new Config();
             databaseSwitcher= new DatabaseSwitcher("CASSANDRA");
             final Consumer<String, GenericRecord> consumer = new KafkaConsumer<>(properties);
-            consumer.subscribe(Arrays.asList(topicLogin,topicDriver,topicShift,topicDriverLocationChanged,topicTrip));
+            consumer.subscribe(Arrays.asList(topicLogin,topicDriver,topicShift,topicDriverLocationChanged,topicTrip,topicDHstatus,topicVehicleAssign));
             try {
                 while (true) {
                     ConsumerRecords<String, GenericRecord> records = consumer.poll(100000);
@@ -119,6 +124,8 @@ public class DriverAndTripConsumer {
 
                             databaseSwitcher.insertTripEnd((int) jsonObject.get("driver_id"), timestap);
                         }
+
+                        
 
 
 
