@@ -1,4 +1,8 @@
 import com.pickme.config.Config;
+
+import com.pickme.dbhelper.DriverLiveCassandra;
+import com.pickme.dbhelper.DriverLiveDatabase;
+import com.pickme.dbhelper.DriverLiveIgnite;
 import com.pickme.display_dashboard.Dashboard;
 import com.pickme.drivertrack.consumers.DriverAndTripConsumer;
 import org.apache.kafka.clients.consumer.*;
@@ -7,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.naming.ldap.PagedResultsControl;
+import java.sql.SQLException;
 import java.util.Properties;
 
 
@@ -20,16 +25,22 @@ public class MainTrackDriverLive {
     private static String topicVehicleAssign;
     private static String topicDHstatus;
     private  static Logger logger= LoggerFactory.getLogger(MainTrackDriverLive.class.getClass().getName());
+    private static DriverLiveDatabase driverLiveDatabase1;
+    private static DriverLiveDatabase driverLiveDatabase2;
 
-    public static void main(String[] args) {
-
-
-        Dashboard dashboard = new Dashboard();
-        dashboard.run();
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
 
         BasicConfigurator.configure();
         Config config=new Config();
+        driverLiveDatabase1 = new DriverLiveCassandra(config);
+        driverLiveDatabase2=new DriverLiveIgnite();
+
+        Dashboard dashboard = new Dashboard();
+        dashboard.run(driverLiveDatabase1);
+
+
+
 
         props = new Properties();
 
@@ -52,7 +63,14 @@ public class MainTrackDriverLive {
         topicTrip=config.getProp().getProperty("TOPIC_TRIP");
         topicVehicleAssign=config.getProp().getProperty("TOPIC_DRIVER_VEHICLE");
         topicDHstatus=config.getProp().getProperty("TOPIC_DH_STATUS");
-        DriverAndTripConsumer driverConsumer= new DriverAndTripConsumer(props, topicLogin,topicShift,topicDriver,topicDriverLocationChanged,topicTrip,topicVehicleAssign,topicDHstatus);
+
+
+
+
+
+
+
+        DriverAndTripConsumer driverConsumer= new DriverAndTripConsumer(driverLiveDatabase1,driverLiveDatabase2,config,props, topicLogin,topicShift,topicDriver,topicDriverLocationChanged,topicTrip,topicVehicleAssign,topicDHstatus);
 
         driverConsumer.getdata();
 

@@ -2,7 +2,7 @@ package com.pickme.display_dashboard;
 
 import com.datastax.driver.core.ResultSet;
 import com.pickme.config.Config;
-import com.pickme.dbhelper.DatabaseSwitcher;
+import com.pickme.dbhelper.DriverLiveDatabase;
 
 
 import javax.swing.*;
@@ -17,7 +17,7 @@ public class Dashboard {
     private JTextField time_text;
     private JButton apply_show;
     private int waiting_time;   //time in minutes
-    private DatabaseSwitcher databaseSwitcher;
+    private DriverLiveDatabase driverLiveDatabase;
     private ResultSet rs;
     private JFrame jFrame;;
     private Config config;
@@ -27,7 +27,7 @@ public class Dashboard {
     public Dashboard() {
 
         config=new Config();
-        databaseSwitcher= new DatabaseSwitcher("CASSANDRA");
+
 
         apply_show.addActionListener(new ActionListener() {
             @Override
@@ -47,7 +47,7 @@ public class Dashboard {
         });
     }
 
-    public void run(){
+    public void run(DriverLiveDatabase driverLiveDatabase){
 
         jFrame = new JFrame("Driver Tracker");
         jFrame.setContentPane(new Dashboard().jpanel);
@@ -55,13 +55,14 @@ public class Dashboard {
         jFrame.setSize(1600,1600);
         jFrame.setVisible(true);
 
+        this.driverLiveDatabase = driverLiveDatabase;
     }
 
 
     private void showing_output(int waiting_time){
 
         dashboard.setText("List of the drivers waiting more than "+waiting_time+" minutes");
-        ArrayList<String> resultList=databaseSwitcher.selectDriver(waiting_time);
+        ArrayList<String> resultList=driverLiveDatabase.selectDriver(waiting_time);
         for (String s:resultList){
 
             dashboard.setText(dashboard.getText() + "\n" + s);
