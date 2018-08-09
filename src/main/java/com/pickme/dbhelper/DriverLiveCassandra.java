@@ -4,23 +4,24 @@ import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
+import com.pickme.config.Config;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
 
-public class DriverLiveCassandra extends DriverLiveDatabase {
+public class DriverLiveCassandra  implements DriverLiveDatabase {
     private Cluster cluster;
     private Session session;
 
-    public DriverLiveCassandra(String node, int port){
-        connect(node,port);
+    public DriverLiveCassandra(Config config){
+        connect(config);
     }
 
-    public void connect(String node, Integer port){    //connection cassandra server with a node and a port
-        Cluster.Builder builder = Cluster.builder().addContactPoint(node);
-        if(port != null){
-            builder.withPort(port);
+    public void connect(Config config){    //connection cassandra server with a node and a port
+        Cluster.Builder builder = Cluster.builder().addContactPoint(config.getProp().getProperty("ADDRESS"));
+        if(config.getProp().getProperty("PORT") != null){
+            builder.withPort(Integer.parseInt(config.getProp().getProperty("PORT")));
         }
         cluster = builder.build();
         session = cluster.connect();
@@ -43,7 +44,7 @@ public class DriverLiveCassandra extends DriverLiveDatabase {
 
 
         StringBuilder sb = new StringBuilder("SELECT driver_id from TrackDriverLive.Driverlive WHERE driverstatus='A' AND loginstatus='A' AND shiftstatus='I' AND last_heartbeat<=20 AND trip_start=0 AND vehicleassignstatus='A' AND directionalhire =0 AND trip_end<=")
-        .append(validatingTime).append("allow filtering;");
+                .append(validatingTime).append("allow filtering;");
         String query = sb.toString();
         ResultSet rs = session.execute(query);
 
@@ -55,7 +56,7 @@ public class DriverLiveCassandra extends DriverLiveDatabase {
 
     }
 
-   @Override
+    @Override
     public void insertShiftStatus(int driver_id , String status){
         StringBuilder sb = new StringBuilder("INSERT INTO ")
                 .append("TrackDriverLive")
